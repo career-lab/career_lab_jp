@@ -409,6 +409,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .services__eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; color: var(--text-faint); margin-bottom: 10px; }
 .services__title { font-size: clamp(1.35rem, 5vw, 1.7rem); font-weight: 800; letter-spacing: -.02em; }
 .services__note { text-align: center; color: var(--text-muted); font-size: 14px; margin: 10px auto 26px; max-width: 36ch; }
+.svc-switch { display: flex; width: max-content; max-width: 100%; margin: 2px auto 20px; padding: 4px; gap: 4px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2, transparent); }
+.svc-switch[hidden] { display: none; }
+.svc-switch__btn { border: 0; background: transparent; color: var(--text-muted); font: inherit; font-size: 13px; font-weight: 700; padding: 7px 16px; border-radius: 999px; cursor: pointer; transition: background .15s, color .15s; }
+.svc-switch__btn.is-active { background: var(--accent); color: #fff; }
 .services__label {
   text-align: center; font-size: 13px; font-weight: 700; color: var(--text-muted);
   margin-bottom: 18px;
@@ -682,6 +686,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           </div>
           <p class="services__note">診断結果を踏まえて、同じタイプの方が実際に活用している支援サービスをまとめました。</p>
           <p class="services__label" id="svcLabel">このタイプの方が活用しているサービス</p>
+          <div class="svc-switch" id="svcSwitch" hidden>
+            <button type="button" class="svc-switch__btn" data-exp="1">経験を活かす</button>
+            <button type="button" class="svc-switch__btn" data-exp="0">未経験から始める</button>
+          </div>
           <div class="service-list" id="serviceList"></div>
           <p class="services__disclaimer">※掲載内容は各タイプの傾向に基づく一般的な情報です。利用を強制するものではありません。</p>
         </div>
@@ -849,27 +857,50 @@ const TYPES = {
 };
 
 /* ====================================================================
-   2) サービス紹介データ  ★ここを編集すれば紹介内容を差し替えられます
-      - url : リンク先（アフィリエイトリンクはここに貼ります）
-      - 表記は「このタイプの方が活用しているサービス」を維持しています
+   2) サービス紹介データ
+      - url : 各カードのリンク先。承認済みは A8 のアフィリエイトリンク、申請中は
+              公式サイトURLでも可（後で差し替え）。'#' のままのカードは自動で非表示。
+      - it / game / web は「経験者(exp)」と「未経験(new)」で出し分け（結果画面で切替も可）
+      - rookie / explore / second は未経験・若手向けのみ
    ==================================================================== */
 const SERVICES = {
-  it: [
-    { tag:'IT・コンサル特化エージェント', name:'テックゲートエキスパート', desc:'20〜30代のIT・Webコンサル領域の転職に強いエージェント。キャリアの方向性から相談できます。', url:'#', icon:'it' },
-    { tag:'IT・Webエンジニア専門', name:'ユニゾンキャリア', desc:'IT・Webエンジニアの転職に特化し、無料相談から丁寧にサポートしてくれるサービスです。', url:'#', icon:'it' },
-    { tag:'IT・Web スカウト型', name:'レバテックダイレクト', desc:'登録しておくと企業からスカウトが届く、IT・Web向けのスカウト転職サービスです。', url:'#', icon:'it' },
-  ],
-  game: [
-    { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Web・ゲーム業界に強く、専任の担当がポートフォリオ作りから転職まで支援してくれるエージェントです。', url:'#', icon:'game' },
-    { tag:'ゲーム業界 特化', name:'Hiraku agent', desc:'ゲーム業界に特化した転職エージェント。無料面談から業界事情を相談できます。', url:'#', icon:'game' },
-    { tag:'Web・ゲーム フリーランス', name:'レバテッククリエイター', desc:'Web・ゲームのクリエイター向けに、フリーランス案件を紹介してくれるサービスです。', url:'#', icon:'game' },
-  ],
-  web: [
-    { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Webデザイナー・クリエイター職に強く、専任担当が作品づくりから転職まで伴走してくれるエージェントです。', url:'#', icon:'web' },
-    { tag:'Web・クリエイター案件', name:'レバテッククリエイター', desc:'Web・デザイン領域のフリーランス案件を紹介してくれるサービスです。', url:'#', icon:'web' },
-    { tag:'Web・AIスキル スクール', name:'メイカラ', desc:'Web（副業）スキルとAIの基礎を学べるスクール。未経験から手を動かして学びたい人向けです。', url:'#', icon:'learn' },
-    { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の使い方を学び、Web制作や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
-  ],
+  it: {
+    exp: [
+      { tag:'IT・コンサル特化エージェント', name:'テックゲートエキスパート', desc:'20〜30代のIT・Webコンサル領域の転職に強いエージェント。キャリアの方向性から相談できます。', url:'#', icon:'it' },
+      { tag:'IT・Webエンジニア専門', name:'ユニゾンキャリア', desc:'IT・Webエンジニアの転職に特化し、無料相談から丁寧にサポートしてくれるサービスです。', url:'#', icon:'it' },
+      { tag:'IT・Web スカウト型', name:'レバテックダイレクト', desc:'登録しておくと企業からスカウトが届く、IT・Web向けのスカウト転職サービスです。', url:'#', icon:'it' },
+      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・Web・IT・セキュリティ業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'it' },
+    ],
+    new: [
+      { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
+      { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
+      { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
+    ],
+  },
+  game: {
+    exp: [
+      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・エンタメ・Web・IT業界に特化した、経験者向けの転職エージェント。実務経験やポートフォリオを活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'game' },
+      { tag:'ゲーム業界 特化', name:'Hiraku agent', desc:'ゲーム業界に特化した転職エージェント。無料面談から業界事情を相談できます。', url:'#', icon:'game' },
+      { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Web・ゲーム業界に強く、専任の担当がポートフォリオ作りから転職まで支援してくれるエージェントです。', url:'#', icon:'game' },
+    ],
+    new: [
+      { tag:'Web・AIスキル スクール', name:'メイカラ', desc:'Web（副業）スキルとAIの基礎を学べるスクール。まずは手を動かして基礎を作りたい人向けです。', url:'#', icon:'learn' },
+      { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、制作や仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
+      { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'未経験からIT・Web系を目指す人に寄り添う特化型エージェント。まず相談したい人向けです。', url:'#', icon:'rookie' },
+    ],
+  },
+  web: {
+    exp: [
+      { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Webデザイナー・クリエイター職に強く、専任担当が作品づくりから転職まで伴走してくれるエージェントです。', url:'#', icon:'web' },
+      { tag:'Web・クリエイター案件', name:'レバテッククリエイター', desc:'Web・デザイン領域のフリーランス案件を紹介してくれるサービスです。', url:'#', icon:'web' },
+      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'Web・ゲーム・IT業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'web' },
+    ],
+    new: [
+      { tag:'Web・AIスキル スクール', name:'メイカラ', desc:'Web（副業）スキルとAIの基礎を学べるスクール。未経験から手を動かして学びたい人向けです。', url:'#', icon:'learn' },
+      { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の使い方を学び、Web制作や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
+      { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'未経験からIT・Web系を目指す人に寄り添う特化型エージェント。まず相談したい人向けです。', url:'#', icon:'rookie' },
+    ],
+  },
   rookie: [
     { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
     { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
@@ -1008,7 +1039,15 @@ function computeResult() {
     if (typeScore[t] > best) { best = typeScore[t]; type = t; }
   }
 
-  return { type, norm, typeScore };
+  // 経験レベル判定：Q3（実務経験の有無）を主軸に、Q5（就業状況）で補正
+  //   Q3 A=「使える武器が多少ある」=経験 / B=「未経験から挑戦」
+  //   Q5 A=「社会に出て数年」=就業歴あり / B=「就職前・探し中」
+  let expScore = 0;
+  expScore += (answers[2] === 'A') ? 2 : -2;
+  expScore += (answers[4] === 'A') ? 1 : -1;
+  const experienced = expScore >= 1;
+
+  return { type, norm, typeScore, experienced };
 }
 
 /* ====================================================================
@@ -1046,8 +1085,8 @@ function finishQuiz() {
    ==================================================================== */
 let lastResult = null;
 
-function renderResult({ type, norm }) {
-  lastResult = { type, norm };
+function renderResult({ type, norm, experienced }) {
+  lastResult = { type, norm, experienced };
   const T = TYPES[type];
   const root = document.getElementById('resultRoot');
   root.setAttribute('data-type', type);
@@ -1071,8 +1110,8 @@ function renderResult({ type, norm }) {
     steps.appendChild(li);
   });
 
-  // サービスカード
-  renderServices(type);
+  // サービスカード（経験者/未経験で出し分け）
+  renderServices(type, experienced);
 
   // レーダー & スコアバー
   drawRadar(norm);
@@ -1099,22 +1138,39 @@ function fillTags(id, arr) {
   });
 }
 
-/* ★承認フラグ：アフィリエイト申請が通るまでは false のままに。
-   全プログラムが承認され、各 url を設定したら true にすると
-   結果ページに「このタイプの方が活用しているサービス」欄が表示されます。 */
-const SHOW_SERVICES = false;
+/* ★表示マスター：全部隠したいとき false。通常は true のままでOK。
+   リンク（url）が入ったカードだけ自動表示されるので、承認・公式URL設定が
+   済んだものから順に表示されます（'#' のカードは出ません）。 */
+const SHOW_SERVICES = true;
 
-function renderServices(type) {
+function renderServices(type, experienced) {
   const list = document.getElementById('serviceList');
   const section = list.closest('.services');
-  if (!SHOW_SERVICES) {            // 未承認のあいだはセクションごと非表示
-    if (section) section.style.display = 'none';
-    list.innerHTML = '';
-    return;
-  }
-  if (section) section.style.display = '';
+  const sw = document.getElementById('svcSwitch');
   list.innerHTML = '';
-  (SERVICES[type] || []).forEach(svc => {
+
+  if (!SHOW_SERVICES) { if (section) section.style.display = 'none'; if (sw) sw.hidden = true; return; }
+
+  const data = SERVICES[type];
+  const branchable = data && !Array.isArray(data);          // {exp,new} 形式か
+  const filled = arr => (arr || []).filter(s => s.url && s.url !== '#'); // リンクが入ったものだけ
+  const items = branchable ? filled(data[experienced ? 'exp' : 'new']) : filled(data);
+
+  // 経験者/未経験トグル：分岐タイプで、両方に表示できるカードがある時だけ出す
+  if (sw) {
+    const showSwitch = branchable && filled(data.exp).length > 0 && filled(data.new).length > 0;
+    sw.hidden = !showSwitch;
+    if (showSwitch) {
+      sw.querySelectorAll('.svc-switch__btn').forEach(b => {
+        b.classList.toggle('is-active', (b.dataset.exp === '1') === !!experienced);
+      });
+    }
+  }
+
+  if (items.length === 0) { if (section) section.style.display = 'none'; return; }
+  if (section) section.style.display = '';
+
+  items.forEach(svc => {
     const card = document.createElement('div');
     card.className = 'service-card';
     const icon = SVC_ICONS[svc.icon] || SVC_ICONS.it;
@@ -1131,6 +1187,15 @@ function renderServices(type) {
     list.appendChild(card);
   });
 }
+
+/* 経験者⇄未経験の手動切替（自動判定が外れても閲覧者が選び直せる） */
+document.getElementById('svcSwitch')?.addEventListener('click', (e) => {
+  const btn = e.target.closest('.svc-switch__btn');
+  if (!btn || !lastResult) return;
+  const exp = btn.dataset.exp === '1';
+  lastResult.experienced = exp;
+  renderServices(lastResult.type, exp);
+});
 
 /* ---- レーダーチャート（SVGで自前描画：外部ライブラリ不要） ---- */
 function drawRadar(norm) {
