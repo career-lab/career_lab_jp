@@ -1050,6 +1050,18 @@ function fillTags(id, arr) {
 
 function renderServices(type) {
   const list = document.getElementById('serviceList');
+  const section = list ? list.closest('.services') : null;
+
+  // ▼▼ アフィリエイト審査が通るまで紹介セクションを非表示にする ▼▼
+  //   審査が通り、SERVICES のリンク(url)を設定したら false を true に変えるだけで元に戻ります
+  const SHOW_SERVICES = false;
+  if (!SHOW_SERVICES) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  if (section) section.style.display = '';
+  // ▲▲ ここまで ▲▲
+
   list.innerHTML = '';
   (SERVICES[type] || []).forEach(svc => {
     const card = document.createElement('div');
