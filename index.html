@@ -8,8 +8,8 @@
      SEO / メタタグ  ※公開前に下の URL とドメインを自分のものに置き換えてください
      ============================================================ -->
 <title>キャリア診断ラボ｜30秒で分かる適職診断</title>
-<meta name="description" content="30秒・全12問の二択であなたに向いているキャリアタイプを分析。ゲーム業界・IT業界・AI副業の3タイプから、強み・弱み・向いている職種・次の一歩までを診断します。無料・登録不要。" />
-<meta name="keywords" content="キャリア診断,適職診断,転職,IT業界,ゲーム業界,AI副業,自己分析,無料診断" />
+<meta name="description" content="30秒・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲーム業界から、未経験スタート、第二新卒まで、強み・向いている職種・次の一歩を診断します。無料・登録不要。" />
+<meta name="keywords" content="キャリア診断,適職診断,転職,IT業界,ゲーム業界,Webデザイナー,未経験転職,第二新卒,自己分析,無料診断" />
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)" />
 <link rel="canonical" href="https://career-lab.github.io/career_lab_jp/" />
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="キャリア診断ラボ" />
 <meta property="og:title" content="キャリア診断ラボ｜30秒で分かる適職診断" />
-<meta property="og:description" content="30秒・全12問の二択で、あなたに向いているキャリアタイプを分析。無料・登録不要。" />
+<meta property="og:description" content="30秒・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲームから未経験・第二新卒まで、強みと次の一歩がわかる無料診断。" />
 <meta property="og:url" content="https://career-lab.github.io/career_lab_jp/" />
 <meta property="og:image" content="https://career-lab.github.io/career_lab_jp/ogp.png" />
 <meta property="og:image:width" content="1200" />
@@ -28,7 +28,7 @@
 <!-- Twitter / X カード -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="キャリア診断ラボ｜30秒で分かる適職診断" />
-<meta name="twitter:description" content="30秒・全12問の二択で、あなたに向いているキャリアタイプを分析。無料・登録不要。" />
+<meta name="twitter:description" content="30秒・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲームから未経験・第二新卒まで、強みと次の一歩がわかる無料診断。" />
 <meta name="twitter:image" content="https://career-lab.github.io/career_lab_jp/ogp.png" />
 
 <!-- 構造化データ（JSON-LD） -->
@@ -48,7 +48,7 @@
       "url": "https://career-lab.github.io/career_lab_jp/",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "30秒・全12問の二択であなたに向いているキャリアタイプを分析する無料の適職診断。",
+      "description": "30秒・全12問の二択で、あなたに向いている働き方タイプ（IT・Web・ゲーム・未経験・第二新卒ほか）を分析する無料の適職診断。",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
   ]
@@ -92,9 +92,12 @@
   --ring: rgba(91,95,239,.35);
 
   /* タイプ別アクセント（結果ページで意味を持って切り替わる） */
-  --c-game: #8b5cf6;
-  --c-it:   #2f7df6;
-  --c-ai:   #06b6d4;
+  --c-it:      #2f7df6;
+  --c-game:    #8b5cf6;
+  --c-web:     #db2777;
+  --c-rookie:  #16a34a;
+  --c-explore: #d97706;
+  --c-second:  #0d9488;
 
   --radius-sm: 12px;
   --radius: 18px;
@@ -124,9 +127,12 @@
   --shadow-md: 0 6px 18px rgba(0,0,0,.45);
   --shadow-lg: 0 12px 40px rgba(0,0,0,.55);
   --ring: rgba(132,136,248,.45);
-  --c-game: #a78bfa;
-  --c-it:   #5b9dff;
-  --c-ai:   #22d3ee;
+  --c-it:      #5b9dff;
+  --c-game:    #a78bfa;
+  --c-web:     #f472b6;
+  --c-rookie:  #34d399;
+  --c-explore: #fbbf24;
+  --c-second:  #2dd4bf;
 }
 
 /* ============================================================
@@ -326,9 +332,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ============================================================ */
 .result { padding: 36px 0 70px; }
 /* タイプ別アクセントを result スコープに適用 */
-.result[data-type="game"] { --accent: var(--c-game); }
-.result[data-type="it"]   { --accent: var(--c-it); }
-.result[data-type="ai"]   { --accent: var(--c-ai); }
+.result[data-type="it"]      { --accent: var(--c-it); }
+.result[data-type="game"]    { --accent: var(--c-game); }
+.result[data-type="web"]     { --accent: var(--c-web); }
+.result[data-type="rookie"]  { --accent: var(--c-rookie); }
+.result[data-type="explore"] { --accent: var(--c-explore); }
+.result[data-type="second"]  { --accent: var(--c-second); }
 
 .result__head { text-align: center; margin-bottom: 40px; }
 .result__eyebrow {
@@ -538,7 +547,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
-        <p class="hero__meta rise d5">全<b>12問</b>・所要時間 約<b>30秒</b>・5つの特性から<b>3タイプ</b>に分類</p>
+        <p class="hero__meta rise d5">全<b>12問</b>・所要時間 約<b>30秒</b>・5つの特性から<b>6タイプ</b>に分類</p>
       </div>
     </div>
   </section>
@@ -590,7 +599,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   <!-- ================= 結果 ================= -->
   <section class="screen" id="screen-result">
-    <div class="result" id="resultRoot" data-type="ai">
+    <div class="result" id="resultRoot" data-type="it">
       <div class="container">
 
         <div class="result__head">
@@ -719,46 +728,46 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* 5つの特性: logic(論理性) / creativity(創造性) / learning(学習意欲)
               / autonomy(自主性) / persistence(継続力) */
 const QUESTIONS = [
-  { n:'Q1', q:'新しいことを始めるとき、あなたは？',
-    a:{ t:'まず行動してみる',           s:{ autonomy:2, creativity:1 } },
-    b:{ t:'まず情報を調べる',           s:{ logic:2, learning:1 } } },
-  { n:'Q2', q:'休日に時間ができたら？',
-    a:{ t:'趣味や創作を楽しむ',         s:{ creativity:2, persistence:1 } },
-    b:{ t:'知識収集や勉強をする',       s:{ learning:2, logic:1 } } },
-  { n:'Q3', q:'仕事で大事にしたいのは？',
-    a:{ t:'安定して成果を出すこと',     s:{ logic:1, persistence:2 } },
-    b:{ t:'新しい価値を生み出すこと',   s:{ creativity:2, autonomy:1 } } },
-  { n:'Q4', q:'難しい課題に直面したら？',
-    a:{ t:'仕組みを分析して解く',       s:{ logic:2, learning:1 } },
-    b:{ t:'試行錯誤しながら進む',       s:{ creativity:1, persistence:2 } } },
-  { n:'Q5', q:'興味を持った分野は？',
-    a:{ t:'とことん深く極めたい',       s:{ persistence:2, learning:1 } },
-    b:{ t:'次々と新しいことに挑戦したい', s:{ autonomy:2, creativity:1 } } },
-  { n:'Q6', q:'理想の働き方に近いのは？',
-    a:{ t:'自分の裁量で自由に進める',   s:{ autonomy:2, creativity:1 } },
-    b:{ t:'専門性を磨いて極める',       s:{ learning:2, logic:1 } } },
-  { n:'Q7', q:'アイデアが浮かんだとき？',
-    a:{ t:'まず形にして試す',           s:{ creativity:2, autonomy:1 } },
-    b:{ t:'実現できるか検証する',       s:{ logic:2, learning:1 } } },
-  { n:'Q8', q:'目標に向かうスタイルは？',
-    a:{ t:'毎日コツコツ積み上げる',     s:{ persistence:2, logic:1 } },
-    b:{ t:'状況に応じて柔軟に変える',   s:{ autonomy:2, creativity:1 } } },
-  { n:'Q9', q:'新しいスキルを学ぶなら？',
-    a:{ t:'作りながら体で覚える',       s:{ creativity:1, persistence:2 } },
-    b:{ t:'理論から体系的に学ぶ',       s:{ logic:2, learning:1 } } },
-  { n:'Q10', q:'評価されたいのは？',
-    a:{ t:'独創的なアイデア',           s:{ creativity:2, autonomy:1 } },
-    b:{ t:'確実で質の高い成果',         s:{ logic:2, persistence:1 } } },
-  { n:'Q11', q:'チームの中での役割は？',
-    a:{ t:'場を引っ張るアイデアマン',   s:{ creativity:2, autonomy:1 } },
-    b:{ t:'全体を支える調整役',         s:{ logic:1, learning:1, persistence:1 } } },
-  { n:'Q12', q:'新しいツールが登場したら？',
-    a:{ t:'とりあえず触ってみる',       s:{ autonomy:2, learning:1 } },
-    b:{ t:'仕組みを理解してから使う',   s:{ logic:2, learning:1 } } },
+  { n:'Q1', q:'新しいアプリやサービスに触れると、つい気になるのは？',
+    a:{ t:'裏側の仕組み・どう動いているか',   s:{ logic:2 },               type:{ it:2, rookie:1 } },
+    b:{ t:'画面の見やすさ・触り心地',         s:{ creativity:2 },          type:{ web:2, game:1 } } },
+  { n:'Q2', q:'ゼロから何かを生み出すなら、楽しそうなのは？',
+    a:{ t:'物語・世界観・人を楽しませる遊び', s:{ creativity:2 },          type:{ game:2 } },
+    b:{ t:'役に立つ便利な仕組み・ツール',     s:{ logic:1, learning:1 },   type:{ it:2, rookie:1 } } },
+  { n:'Q3', q:'今の自分のスキルや経験について、近いのは？',
+    a:{ t:'仕事で使える武器が多少はある',     s:{ persistence:1 },         type:{ it:2, game:1, second:1 } },
+    b:{ t:'まだこれから。未経験から挑戦したい', s:{ learning:1 },          type:{ rookie:2, explore:1 } } },
+  { n:'Q4', q:'「いいね」と言われて一番うれしいのは？',
+    a:{ t:'センス・デザイン・見た目の良さ',   s:{ creativity:2 },          type:{ web:2 } },
+    b:{ t:'正確さ・仕組みのうまさ',           s:{ logic:2 },               type:{ it:2, rookie:1 } } },
+  { n:'Q5', q:'今のあなたの状況に近いのは？',
+    a:{ t:'社会に出て数年、この先に迷いがある', s:{ autonomy:1 },          type:{ second:4, explore:1 } },
+    b:{ t:'就職前、または自分の方向を探し中',   s:{ learning:1 },          type:{ explore:3, rookie:1 } } },
+  { n:'Q6', q:'仕事に求めるものは？',
+    a:{ t:'手に職をつけて、長く食べていける力', s:{ persistence:1, learning:1 }, type:{ rookie:2, it:1 } },
+    b:{ t:'自分の「好き」「得意」を活かせること', s:{ creativity:1 },       type:{ game:1, web:1, explore:2 } } },
+  { n:'Q7', q:'作るとしたら、どっちにワクワクする？',
+    a:{ t:'遊び・物語のある“体験”をつくる',   s:{ creativity:2 },          type:{ game:2 } },
+    b:{ t:'見た目・使いやすさで“伝わる”ものを', s:{ creativity:1, autonomy:1 }, type:{ web:2 } } },
+  { n:'Q8', q:'興味の幅について、近いのは？',
+    a:{ t:'これと決めたら一つを深掘りしたい', s:{ persistence:2 },         type:{ it:1, game:1, web:1 } },
+    b:{ t:'気になることが多くて、まだ絞れない', s:{ learning:1 },          type:{ explore:2, second:2 } } },
+  { n:'Q9', q:'学ぶときのスタイルは？',
+    a:{ t:'手を動かして、作りながら覚える',   s:{ creativity:1, persistence:1 }, type:{ web:1, game:1, rookie:1 } },
+    b:{ t:'基礎から体系的に学びたい',         s:{ logic:1, learning:1 },   type:{ it:1, rookie:2 } } },
+  { n:'Q10', q:'5年後の理想に近いのは？',
+    a:{ t:'専門スキルで頼られる存在になる',   s:{ logic:1, persistence:1 }, type:{ it:2, web:1, game:1 } },
+    b:{ t:'まずは自分に合う居場所を見つける', s:{ autonomy:1 },            type:{ explore:2, second:2 } } },
+  { n:'Q11', q:'働く環境のイメージに近いのは？',
+    a:{ t:'作る・表現する側で価値を出す',     s:{ creativity:2 },          type:{ game:2, web:2 } },
+    b:{ t:'安定した環境で着実に成長する',     s:{ persistence:1 },         type:{ rookie:1, second:3, explore:1 } } },
+  { n:'Q12', q:'いま転職・就職で一番ほしいのは？',
+    a:{ t:'自分の“向き”を知るヒント',         s:{ learning:1 },            type:{ explore:2, rookie:1 } },
+    b:{ t:'具体的な求人・次の一歩',           s:{ autonomy:1 },            type:{ it:1, game:1, web:1, second:1 } } },
 ];
 
 /* 各特性の理論上の最大値（レーダー正規化用・QUESTIONSと整合） */
-const MAX = { logic:17, creativity:16, learning:11, autonomy:14, persistence:13 };
+const MAX = { logic:7, creativity:12, learning:7, autonomy:4, persistence:7 };
 
 /* 特性の表示順（レーダーの軸と一致：上→時計回り） */
 const AXES = [
@@ -771,38 +780,71 @@ const AXES = [
 
 /* タイプ別コンテンツ */
 const TYPES = {
-  game: {
-    name: 'ゲーム業界タイプ',
-    accentVar: '--c-game',
-    catch: 'ゼロから世界を作り、最後まで磨き上げる。創造と没頭の力を持つタイプ。',
-    desc: '豊かな発想力と、完成まで作り込む粘り強さを兼ね備えています。頭の中のイメージを形にすることに喜びを感じ、細部にこだわりながら一つの作品を仕上げきれる人。エンタメやコンテンツ制作のように、創造性と作り込みの両方が求められる現場で力を発揮します。',
-    strength: ['発想力・企画力', '細部への作り込み', '最後までやり抜く集中力'],
-    weak: ['興味に偏りが出やすい', '完璧主義になりがち', '没頭しすぎて疲れやすい'],
-    work: '創作に集中できる環境で、自分の裁量を持ってプロジェクトを動かせる働き方が向いています。チームでアイデアを出し合いながら、形にしていく現場が理想的です。',
-    jobs: ['ゲームプランナー', 'ゲームデザイナー', 'レベルデザイナー', 'シナリオライター', 'クリエイティブディレクター'],
-    steps: ['まずは小さくても自分の作品を一つ完成させ、ポートフォリオにする', 'ゲーム制作の進め方や職種ごとの役割を体系的に学ぶ', '業界に詳しいキャリアの専門家に、適性と進路を相談してみる'],
-  },
   it: {
-    name: 'IT業界タイプ',
+    name: 'ITエンジニア型',
     accentVar: '--c-it',
-    catch: '複雑な仕組みを解きほぐし、技術で課題を解決する。論理と学習の力を持つタイプ。',
-    desc: '論理的に物事を捉える力と、新しい知識を吸収し続ける学習意欲に優れています。複雑な問題も構造に分解して解決へ導くのが得意で、変化の速い技術トレンドにもしなやかに対応できる人。専門性を積み上げ、スキルで評価される領域で着実に伸びていくタイプです。',
-    strength: ['論理的思考力', '技術キャッチアップの速さ', '問題解決力'],
-    weak: ['理屈が先行し動き出しが遅れがち', '感覚的な判断が苦手なことも', '完璧な理解を求めすぎる傾向'],
-    work: 'スキルや専門性が正当に評価される環境で、技術を深めていける働き方が向いています。明確な課題に対してじっくり取り組める現場で力を発揮します。',
-    jobs: ['ソフトウェアエンジニア', 'データエンジニア', 'インフラエンジニア', 'システムアーキテクト', 'テックリード'],
-    steps: ['学習ロードマップを立て、手を動かしながら基礎を固める', '小さなプロダクトを作って公開し、成果物で実力を示す', 'IT業界に強いキャリアの専門家に、目指す方向性を相談してみる'],
+    catch: '仕組みを理解し、技術で課題を解決する。論理と探究のIT適性タイプ。',
+    desc: '物事を構造で捉える力と、分からないことを調べ尽くす探究心を持っています。仕組みやデータの流れに自然と興味が向き、手を動かして検証しながら答えにたどり着くのが得意。専門スキルを積み上げ、技術で評価される環境で着実に伸びていくタイプです。',
+    strength: ['論理的思考力', '自走して調べる力', '専門性を深める集中力'],
+    weak: ['理屈が先で動き出しが遅れがち', '完璧な理解を求めすぎることも'],
+    work: 'スキルや成果が正当に評価される環境で、技術を深めていける働き方が向いています。明確な課題にじっくり取り組める現場で力を発揮します。',
+    jobs: ['ソフトウェアエンジニア', 'バックエンドエンジニア', 'インフラ・クラウドエンジニア', 'データエンジニア', '社内SE'],
+    steps: ['学習の地図を描いて、手を動かしながら基礎を固める', '小さなものを作って公開し、成果物で実力を示す', 'IT専門のエージェントに、目指す方向性を相談する'],
   },
-  ai: {
-    name: 'AI副業タイプ',
-    accentVar: '--c-ai',
-    catch: '自分の裁量で動き、AIを味方に成果を生む。自走と発想の力を持つタイプ。',
-    desc: '自分で考えて動く自走力と、新しいツールへの好奇心、そしてアイデアを価値に変える発想力を併せ持っています。組織に縛られず、自分のペースで挑戦することが得意な人。AIという強力な相棒を使いこなせば、少人数や個人でも大きな成果を生み出せるタイプです。',
-    strength: ['自走力・行動力', '新しいツールへの適応力', 'アイデアを収益に変える発想'],
-    weak: ['一人で抱え込みやすい', '興味が分散しやすい', '継続の仕組み化が課題になりがち'],
-    work: '場所や時間に縛られず、自分のアイデアを起点に動ける働き方が向いています。個人で完結できるプロジェクトや、副業・スモールビジネスと相性が良いタイプです。',
-    jobs: ['AIコンテンツクリエイター', 'プロンプトエンジニア', '個人開発者', 'AI活用コンサルタント', '副業ブロガー / 発信者'],
-    steps: ['AIツールを使い、まずは小さく副業をスタートしてみる', '取り組みや成果を発信して、実績を少しずつ積み上げる', 'AI活用を体系的に学べる場で、収益化の型を身につける'],
+  game: {
+    name: 'ゲーム業界型',
+    accentVar: '--c-game',
+    catch: '遊びと物語で人を楽しませる。創造と作り込みのエンタメ適性タイプ。',
+    desc: '「何が面白いか」を考え、世界観や体験をゼロから生み出すことにワクワクするタイプ。遊ぶだけでなく“作る側”の視点を持ち、細部までこだわって作り込める粘り強さもあります。創造性と作り込みの両方が活きる、エンタメ・ゲームの現場と相性が良いタイプです。',
+    strength: ['発想力・企画力', '体験を設計する力', '飽きずに作り込む集中力'],
+    weak: ['興味に偏りが出やすい', '完璧主義で抱え込みがち'],
+    work: '創作に集中でき、裁量を持ってプロジェクトを動かせる環境が向いています。チームでアイデアを形にしていく現場が理想です。',
+    jobs: ['ゲームプランナー', 'ゲームデザイナー', 'レベルデザイナー', 'シナリオライター', '2D・3Dデザイナー'],
+    steps: ['自分の作品を一つ完成させてポートフォリオにする', '制作の流れと職種ごとの役割を知る', 'ゲーム業界に強い専門エージェントに相談する'],
+  },
+  web: {
+    name: 'Webデザイナー型',
+    accentVar: '--c-web',
+    catch: '見た目と使いやすさで“伝わる”を作る。デザイン感性の表現適性タイプ。',
+    desc: '見た目の美しさや使い心地への感度が高く、「どう伝えれば気持ちよく届くか」を考えるのが得意なタイプ。手を動かして形にしながら磨いていくスタイルで、デザインとものづくりの掛け合わせで価値を出せます。Web・クリエイティブ領域で力を発揮するタイプです。',
+    strength: ['デザイン感性・美的センス', '作りながら改善する力', '相手目線で考える力'],
+    weak: ['感覚に頼りすぎることも', 'こだわりで手が止まりやすい'],
+    work: '自分のセンスや表現を活かせる環境が向いています。作る・整える・伝えるが評価される現場で力を発揮します。',
+    jobs: ['Webデザイナー', 'UI / UXデザイナー', 'フロントエンドエンジニア', 'グラフィックデザイナー', 'クリエイティブ職'],
+    steps: ['作品をまとめてポートフォリオで実力を見せる', 'Web・デザインの基礎をスクールなどで固める', 'クリエイター専門のエージェントに相談する'],
+  },
+  rookie: {
+    name: 'IT未経験チャレンジ型',
+    accentVar: '--c-rookie',
+    catch: '未経験から手に職へ。伸びしろと学習意欲のスタートアップ適性タイプ。',
+    desc: '今は未経験でも、ITやデジタルのスキルを身につけて長く食べていきたいという前向きさを持つタイプ。基礎から体系的に学ぶ姿勢があり、正しい順番で取り組めば着実に伸びていけます。「これから手に職をつけたい人」にぴったりの、成長余地の大きいタイプです。',
+    strength: ['学ぶ意欲・吸収力', '手に職をつけたい本気度', 'コツコツ続ける素直さ'],
+    weak: ['何から始めるか迷いやすい', '情報過多で動けなくなりがち'],
+    work: '未経験を受け入れ、研修やサポートが整った環境が向いています。学びながら実務に入れる現場で伸びていけます。',
+    jobs: ['未経験エンジニア', 'インフラエンジニア（未経験可）', 'ITサポート・ヘルプデスク', 'テスター・QA', '生成AI活用職'],
+    steps: ['まず基礎を学べるスクールや教材で土台を作る', '未経験OKの求人を専門エージェントで探す', '小さく作って学びを実感する'],
+  },
+  explore: {
+    name: 'じっくり探す型',
+    accentVar: '--c-explore',
+    catch: '答えはこれから。可能性を広く持つ、自分探しのスタート適性タイプ。',
+    desc: '今はまだ「これだ」という方向が定まっていないタイプ。でもそれは、選択肢が多いということでもあります。一つに絞れていない段階だからこそ、まず自分の“向き”を知り、いろいろな求人に触れてみることが次の一歩につながります。',
+    strength: ['視野の広さ・柔軟さ', '決めつけない素直さ', 'これからの伸びしろ'],
+    weak: ['情報が多すぎて迷いやすい', '人と比べて落ち込みやすい'],
+    work: 'まずは選択肢を広く見られる環境が向いています。幅広い求人に触れながら、自分に合うものを探していくのがおすすめです。',
+    jobs: ['（まずは方向探しから）営業・販売', '事務・アシスタント', 'IT・Web入門職', '接客・サービス など幅広く'],
+    steps: ['自分の“向き”を知るところから始める', '総合型サイトに登録して求人を眺めてみる', '気になった分野を一つ、試してみる'],
+  },
+  second: {
+    name: '第二新卒・再スタート型',
+    accentVar: '--c-second',
+    catch: '一度の経験を糧に、もう一度。やり直しが効く若手リスタート適性タイプ。',
+    desc: '社会に出て数年、「この環境でいいのか」という違和感を持ち始めたタイプ。一度働いた経験があるからこそ、次は自分に合う場所を選び直せます。第二新卒は企業からの需要も高く、若さと素直さを武器に再スタートしやすいタイミングです。',
+    strength: ['一度社会に出た経験', '早く動ける若さ', '学び直せる素直さ'],
+    weak: ['短期離職を気にしすぎる', '焦って決めてしまいやすい'],
+    work: '第二新卒を歓迎し、育てる前提の環境が向いています。やり直しを応援してくれる現場で力を発揮します。',
+    jobs: ['第二新卒歓迎の総合職', '営業', 'IT・Web系（未経験可）', '事務・企画 など'],
+    steps: ['第二新卒に強いエージェントに相談する', '「何から逃げて何へ向かうか」を言葉にする', '焦らず、合う環境を選び直す'],
   },
 };
 
@@ -812,40 +854,47 @@ const TYPES = {
       - 表記は「このタイプの方が活用しているサービス」を維持しています
    ==================================================================== */
 const SERVICES = {
-  game: [
-    {
-      tag: 'ゲーム業界 特化型エージェント',
-      name: 'ゲーム業界向け 転職エージェント',
-      desc: 'ゲーム業界の職種や制作現場を熟知した担当者が、ポートフォリオの見せ方から非公開求人の紹介まで支援してくれるサービスです。',
-      url: '#', // ← ここにリンク（アフィリエイトURL）を設定
-      icon: 'game',
-    },
-  ],
   it: [
-    {
-      tag: 'IT・Web業界 特化型エージェント',
-      name: 'IT業界向け 転職エージェント',
-      desc: 'エンジニアやIT職に精通したアドバイザーが、スキルの棚卸しからキャリアパス設計、企業選びまで伴走してくれるサービスです。',
-      url: '#', // ← ここにリンク（アフィリエイトURL）を設定
-      icon: 'it',
-    },
+    { tag:'IT・コンサル特化エージェント', name:'テックゲートエキスパート', desc:'20〜30代のIT・Webコンサル領域の転職に強いエージェント。キャリアの方向性から相談できます。', url:'#', icon:'it' },
+    { tag:'IT・Webエンジニア専門', name:'ユニゾンキャリア', desc:'IT・Webエンジニアの転職に特化し、無料相談から丁寧にサポートしてくれるサービスです。', url:'#', icon:'it' },
+    { tag:'IT・Web スカウト型', name:'レバテックダイレクト', desc:'登録しておくと企業からスカウトが届く、IT・Web向けのスカウト転職サービスです。', url:'#', icon:'it' },
   ],
-  ai: [
-    {
-      tag: 'AI活用 学習プログラム',
-      name: 'Claude学習スクール',
-      desc: 'AIアシスタント「Claude」の実践的な使い方を体系的に学び、副業や個人開発に活かすための学習プログラムです。',
-      url: '#', // ← ここにリンク（アフィリエイトURL）を設定
-      icon: 'ai',
-    },
+  game: [
+    { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Web・ゲーム業界に強く、専任の担当がポートフォリオ作りから転職まで支援してくれるエージェントです。', url:'#', icon:'game' },
+    { tag:'ゲーム業界 特化', name:'Hiraku agent', desc:'ゲーム業界に特化した転職エージェント。無料面談から業界事情を相談できます。', url:'#', icon:'game' },
+    { tag:'Web・ゲーム フリーランス', name:'レバテッククリエイター', desc:'Web・ゲームのクリエイター向けに、フリーランス案件を紹介してくれるサービスです。', url:'#', icon:'game' },
+  ],
+  web: [
+    { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Webデザイナー・クリエイター職に強く、専任担当が作品づくりから転職まで伴走してくれるエージェントです。', url:'#', icon:'web' },
+    { tag:'Web・クリエイター案件', name:'レバテッククリエイター', desc:'Web・デザイン領域のフリーランス案件を紹介してくれるサービスです。', url:'#', icon:'web' },
+    { tag:'Web・AIスキル スクール', name:'メイカラ', desc:'Web（副業）スキルとAIの基礎を学べるスクール。未経験から手を動かして学びたい人向けです。', url:'#', icon:'learn' },
+  ],
+  rookie: [
+    { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
+    { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
+    { tag:'未経験IT エージェント', name:'IT専門転職エージェント＠PRO人', desc:'未経験からITエンジニアを目指す人を、初めての転職でも徹底サポートしてくれるサービスです。', url:'#', icon:'it' },
+  ],
+  explore: [
+    { tag:'総合型 求人サイト', name:'リクナビNEXT', desc:'幅広い業種の求人を眺められる総合型の転職サイト。まずは登録して世の中の仕事を知るのに向いています。', url:'#', icon:'explore' },
+    { tag:'20代向け エージェント紹介', name:'キャリコン', desc:'20代向けに、あなたに合った転職エージェントを複数紹介してくれるサービスです。', url:'#', icon:'explore' },
+    { tag:'口コミ型 転職サービス', name:'ワンキャリア転職', desc:'働く人の声や中の様子を見ながら選べる転職サービス。情報を集めながら進めたい人向けです。', url:'#', icon:'explore' },
+  ],
+  second: [
+    { tag:'第二新卒 特化エージェント', name:'UZUZ第二新卒', desc:'第二新卒・既卒向けに特化した転職エージェント。若手の再スタートに寄り添ってくれます。', url:'#', icon:'second' },
+    { tag:'新卒・若手 サポート', name:'doda新卒エージェント', desc:'完全無料で内定獲得までサポートしてくれる、新卒・若手向けのエージェントです。', url:'#', icon:'second' },
+    { tag:'20代・未経験 歓迎', name:'安定のお仕事', desc:'フリーター・第二新卒・20代の未経験転職に専門で対応してくれる転職支援サービスです。', url:'#', icon:'second' },
   ],
 };
 
 /* サービスカード用アイコン */
 const SVC_ICONS = {
-  game: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M7 11v3M5.5 12.5h3M15 12h.01M18 14h.01"/></svg>',
-  it:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>',
-  ai:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.2L18 8.8l-3.2 2.8.9 4.6L12 14l-3.7 2.2.9-4.6L6 8.8l4.4-1.6z"/><circle cx="12" cy="12" r="9.5" stroke-opacity=".25"/></svg>',
+  it:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>',
+  game:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M7 11v3M5.5 12.5h3M15 12h.01M18 14h.01"/></svg>',
+  web:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 2.5 2.5-7 7L11 22z"/><path d="M17.5 8.5 21 5l-2-2-3.5 3.5z"/><path d="M3 3l8 8"/><circle cx="11" cy="11" r="2"/></svg>',
+  learn:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.2L18 8.8l-3.2 2.8.9 4.6L12 14l-3.7 2.2.9-4.6L6 8.8l4.4-1.6z"/><circle cx="12" cy="12" r="9.5" stroke-opacity=".25"/></svg>',
+  rookie:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2 5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 2-7 5-9z"/><path d="M9 16c-1.5 1-2 3-2 5 2 0 4-.5 5-2"/><circle cx="12" cy="10" r="1.6"/></svg>',
+  explore: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><polygon points="16 8 13.5 13.5 8 16 10.5 10.5"/></svg>',
+  second:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4M3 3v4h4"/></svg>',
 };
 
 /* ====================================================================
@@ -936,28 +985,29 @@ qBack.addEventListener('click', () => {
    ==================================================================== */
 function computeResult() {
   const raw = { logic:0, creativity:0, learning:0, autonomy:0, persistence:0 };
+  const typeScore = { it:0, game:0, web:0, rookie:0, explore:0, second:0 };
+
   answers.forEach((ans, i) => {
     const opt = ans === 'B' ? QUESTIONS[i].b : QUESTIONS[i].a;
-    for (const k in opt.s) raw[k] += opt.s[k];
+    for (const k in opt.s) raw[k] += opt.s[k];           // レーダー用の特性ポイント
+    if (opt.type) for (const k in opt.type) typeScore[k] += opt.type[k]; // タイプ判定ポイント
   });
 
-  // 0-100 に正規化（表示が空にならないよう下限8）
+  // 特性を0-100に正規化（表示が空にならないよう下限8）
   const norm = {};
   for (const k in raw) {
     norm[k] = Math.max(8, Math.min(100, Math.round((raw[k] / MAX[k]) * 100)));
   }
 
-  // タイプ判定（正規化値の重み付き合算）
-  const L = norm.logic, C = norm.creativity, Le = norm.learning, A = norm.autonomy, P = norm.persistence;
-  const scores = {
-    game: C * 0.45 + P * 0.40 + A * 0.15,
-    it:   L * 0.45 + Le * 0.40 + P * 0.15,
-    ai:   A * 0.45 + Le * 0.30 + C * 0.25,
-  };
-  let type = 'ai', best = -1;
-  for (const t of ['game', 'it', 'ai']) { if (scores[t] > best) { best = scores[t]; type = t; } }
+  // タイプ判定：6タイプで最高点を採用
+  //   ※ explore（じっくり探す型）は迷いの受け皿なので、同点時に勝たないよう最後に評価
+  const order = ['it', 'game', 'web', 'rookie', 'second', 'explore'];
+  let type = 'explore', best = -1;
+  for (const t of order) {
+    if (typeScore[t] > best) { best = typeScore[t]; type = t; }
+  }
 
-  return { type, norm };
+  return { type, norm, typeScore };
 }
 
 /* ====================================================================
@@ -1048,20 +1098,20 @@ function fillTags(id, arr) {
   });
 }
 
+/* ★承認フラグ：アフィリエイト申請が通るまでは false のままに。
+   全プログラムが承認され、各 url を設定したら true にすると
+   結果ページに「このタイプの方が活用しているサービス」欄が表示されます。 */
+const SHOW_SERVICES = false;
+
 function renderServices(type) {
   const list = document.getElementById('serviceList');
-  const section = list ? list.closest('.services') : null;
-
-  // ▼▼ アフィリエイト審査が通るまで紹介セクションを非表示にする ▼▼
-  //   審査が通り、SERVICES のリンク(url)を設定したら false を true に変えるだけで元に戻ります
-  const SHOW_SERVICES = false;
-  if (!SHOW_SERVICES) {
+  const section = list.closest('.services');
+  if (!SHOW_SERVICES) {            // 未承認のあいだはセクションごと非表示
     if (section) section.style.display = 'none';
+    list.innerHTML = '';
     return;
   }
   if (section) section.style.display = '';
-  // ▲▲ ここまで ▲▲
-
   list.innerHTML = '';
   (SERVICES[type] || []).forEach(svc => {
     const card = document.createElement('div');
