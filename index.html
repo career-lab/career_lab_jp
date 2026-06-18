@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============================================================
+     SEO / メタタグ  ※公開前に下の URL とドメインを自分のものに置き換えてください
+     ============================================================ -->
+<title>キャリア診断ラボ｜30秒で分かる適職診断</title>
+<meta name="description" content="30秒・全12問の二択であなたに向いているキャリアタイプを分析。ゲーム業界・IT業界・AI副業の3タイプから、強み・弱み・向いている職種・次の一歩までを診断します。無料・登録不要。" />
+<meta name="keywords" content="キャリア診断,適職診断,転職,IT業界,ゲーム業界,AI副業,自己分析,無料診断" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)" />
+<link rel="canonical" href="https://example.com/" />
+
+<!-- OGP（Facebook / 一般SNS） -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="キャリア診断ラボ" />
+<meta property="og:title" content="キャリア診断ラボ｜30秒で分かる適職診断" />
+<meta property="og:description" content="30秒・全12問の二択で、あなたに向いているキャリアタイプを分析。無料・登録不要。" />
+<meta property="og:url" content="https://example.com/" />
+<meta property="og:image" content="https://example.com/ogp.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="ja_JP" />
+
+<!-- Twitter / X カード -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="キャリア診断ラボ｜30秒で分かる適職診断" />
+<meta name="twitter:description" content="30秒・全12問の二択で、あなたに向いているキャリアタイプを分析。無料・登録不要。" />
+<meta name="twitter:image" content="https://example.com/ogp.png" />
+
+<!-- 構造化データ（JSON-LD） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "キャリア診断ラボ",
+      "url": "https://example.com/",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "WebApplication",
+      "name": "キャリア診断ラボ",
+      "url": "https://example.com/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "30秒・全12問の二択であなたに向いているキャリアタイプを分析する無料の適職診断。",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+    }
+  ]
+}
+</script>
+
+<!-- 描画前にテーマを確定して画面のちらつきを防ぐ（保存はしません） -->
+<script>
+  (function () {
+    try {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    } catch (e) {}
+  })();
+</script>
+
+<!-- ファビコン（外部リクエストなしのインラインSVG） -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 8-4.2 13H9.2L5 11z' fill='none' stroke='%235b5fef' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='15' r='2.6' fill='%235b5fef'/%3E%3C/svg%3E" />
+
+<style>
+/* ============================================================
+   デザイントークン
+   ============================================================ */
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #fbfbfd;
+  --border: #e7e9ee;
+  --border-strong: #d7dae1;
+  --text: #14161b;
+  --text-muted: #5b616e;
+  --text-faint: #99a0ab;
+  --primary: #5b5fef;
+  --primary-strong: #4a4ed8;
+  --primary-soft: #eef0ff;
+  --grad: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --shadow-sm: 0 1px 2px rgba(16,18,27,.04), 0 1px 3px rgba(16,18,27,.06);
+  --shadow-md: 0 4px 12px rgba(16,18,27,.06), 0 12px 32px rgba(16,18,27,.07);
+  --shadow-lg: 0 8px 24px rgba(16,18,27,.08), 0 24px 56px rgba(16,18,27,.10);
+  --ring: rgba(91,95,239,.35);
+
+  /* タイプ別アクセント（結果ページで意味を持って切り替わる） */
+  --c-game: #8b5cf6;
+  --c-it:   #2f7df6;
+  --c-ai:   #06b6d4;
+
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --maxw: 720px;
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+          "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+          "Yu Gothic", Meiryo, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #0b0c0f;
+  --bg-subtle: #101218;
+  --surface: #16181e;
+  --surface-2: #1a1d24;
+  --border: #262a33;
+  --border-strong: #333845;
+  --text: #eef0f4;
+  --text-muted: #9aa1ad;
+  --text-faint: #6b7280;
+  --primary: #8488f8;
+  --primary-strong: #9a9dfb;
+  --primary-soft: #1b1d2e;
+  --grad: linear-gradient(135deg, #7c80f7 0%, #a78bfa 100%);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-md: 0 6px 18px rgba(0,0,0,.45);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.55);
+  --ring: rgba(132,136,248,.45);
+  --c-game: #a78bfa;
+  --c-it:   #5b9dff;
+  --c-ai:   #22d3ee;
+}
+
+/* ============================================================
+   ベース
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "palt" 1;
+  letter-spacing: .01em;
+  overflow-x: hidden;
+  transition: background .4s ease, color .4s ease;
+}
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; border-radius: 6px; }
+.tnum { font-variant-numeric: tabular-nums; }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+
+/* ============================================================
+   ヘッダー
+   ============================================================ */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.site-header__inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 14px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 15.5px; letter-spacing: -.01em; }
+.brand svg { width: 22px; height: 22px; display: block; }
+.brand b { color: var(--primary); }
+.theme-toggle {
+  width: 38px; height: 38px; border-radius: 11px;
+  border: 1px solid var(--border); background: var(--surface);
+  display: grid; place-items: center; color: var(--text-muted);
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.theme-toggle:hover { background: var(--surface-2); border-color: var(--border-strong); transform: translateY(-1px); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .moon { display: none; }
+[data-theme="dark"] .theme-toggle .sun { display: none; }
+[data-theme="dark"] .theme-toggle .moon { display: block; }
+
+/* ============================================================
+   画面切り替え
+   ============================================================ */
+.screen { display: none; }
+.screen.is-active { display: block; }
+
+/* 共通の登場アニメーション */
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise .6s cubic-bezier(.22,.61,.36,1) both; }
+.d1 { animation-delay: .05s; } .d2 { animation-delay: .13s; } .d3 { animation-delay: .21s; }
+.d4 { animation-delay: .29s; } .d5 { animation-delay: .37s; } .d6 { animation-delay: .45s; }
+
+/* ============================================================
+   ヒーロー（ファーストビュー）
+   ============================================================ */
+.hero { position: relative; padding: 64px 0 80px; text-align: center; overflow: hidden; }
+.hero__bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  display: grid; place-items: center; opacity: .5;
+  -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 68%);
+  mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 68%);
+}
+.hero__bg svg { width: min(560px, 130%); height: auto; }
+.hero .container { position: relative; z-index: 1; }
+.eyebrow {
+  display: inline-flex; flex-wrap: wrap; gap: 7px; justify-content: center; margin-bottom: 22px;
+}
+.pill {
+  font-size: 12.5px; font-weight: 600; letter-spacing: .02em;
+  padding: 6px 13px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+}
+.hero h1 {
+  font-size: clamp(2.1rem, 8.4vw, 3.5rem); font-weight: 800;
+  letter-spacing: -.035em; line-height: 1.12; margin-bottom: 18px;
+}
+.hero h1 .accent {
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero__sub { font-size: clamp(1rem, 4vw, 1.18rem); color: var(--text-muted); max-width: 30ch; margin: 0 auto 34px; }
+.hero__meta { margin-top: 24px; font-size: 13px; color: var(--text-faint); }
+.hero__meta b { color: var(--text-muted); font-weight: 600; }
+
+/* ボタン */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-weight: 700; font-size: 16px; letter-spacing: .01em;
+  padding: 16px 30px; border-radius: 999px; line-height: 1;
+  transition: transform .18s cubic-bezier(.22,.61,.36,1), box-shadow .25s, background .2s, border-color .2s;
+  will-change: transform;
+}
+.btn--primary { color: #fff; background: var(--grad); box-shadow: 0 6px 20px var(--ring); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px var(--ring); }
+.btn--primary:active { transform: translateY(0); }
+.btn--primary svg { transition: transform .25s; }
+.btn--primary:hover svg { transform: translateX(4px); }
+.btn--ghost { border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); box-shadow: var(--shadow-sm); }
+.btn--ghost:hover { background: var(--surface-2); transform: translateY(-1px); }
+.btn--block { width: 100%; }
+
+/* ============================================================
+   診断（クイズ）
+   ============================================================ */
+.quiz { padding: 30px 0 64px; min-height: 78vh; }
+.progress { margin-bottom: 34px; }
+.progress__meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 11px; font-size: 13px; color: var(--text-muted); font-weight: 600;
+}
+.progress__meta .count { color: var(--text); }
+.progress__meta .count em { font-style: normal; color: var(--primary); font-size: 17px; }
+.progress__track { height: 7px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.progress__bar {
+  height: 100%; width: 0; border-radius: 999px; background: var(--grad);
+  transition: width .55s cubic-bezier(.22,.61,.36,1);
+}
+
+.qcard { }
+.qnum {
+  font-size: 12.5px; font-weight: 700; letter-spacing: .14em; color: var(--primary);
+  margin-bottom: 12px;
+}
+.qtext {
+  font-size: clamp(1.3rem, 5.4vw, 1.85rem); font-weight: 700; letter-spacing: -.02em;
+  line-height: 1.4; margin-bottom: 30px;
+}
+@keyframes qin { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.qanim { animation: qin .42s cubic-bezier(.22,.61,.36,1) both; }
+
+.options { display: flex; flex-direction: column; gap: 14px; }
+.option {
+  position: relative; text-align: left; width: 100%;
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 20px; border-radius: var(--radius);
+  background: var(--surface); border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform .16s, border-color .2s, box-shadow .25s, background .2s;
+}
+.option:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.option:active { transform: translateY(0) scale(.995); }
+.option.is-picked { border-color: var(--primary); background: var(--primary-soft); box-shadow: 0 0 0 4px var(--ring); }
+.option__key {
+  flex: none; width: 40px; height: 40px; border-radius: 11px;
+  display: grid; place-items: center; font-weight: 800; font-size: 16px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.option:hover .option__key, .option.is-picked .option__key { background: var(--grad); color: #fff; border-color: transparent; }
+.option__text { font-size: 16.5px; font-weight: 600; line-height: 1.45; }
+.qback {
+  display: inline-flex; align-items: center; gap: 7px; margin-top: 26px;
+  font-size: 14px; color: var(--text-faint); font-weight: 600;
+  transition: color .2s, opacity .2s;
+}
+.qback:hover { color: var(--text-muted); }
+.qback[hidden] { display: none; }
+
+/* ============================================================
+   分析中（ローディング演出）
+   ============================================================ */
+.loading { min-height: 80vh; display: grid; place-items: center; padding: 40px 0; }
+.loading__inner { text-align: center; }
+.loader { width: 132px; height: 132px; margin: 0 auto 30px; position: relative; }
+.loader svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.loader .ring-bg { fill: none; stroke: var(--border); stroke-width: 6; }
+.loader .ring-fg {
+  fill: none; stroke: url(#lgrad); stroke-width: 6; stroke-linecap: round;
+  stroke-dasharray: 364; stroke-dashoffset: 364;
+  animation: fill 2.4s cubic-bezier(.5,0,.2,1) forwards;
+}
+@keyframes fill { to { stroke-dashoffset: 40; } }
+.loader__pct {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-size: 26px; font-weight: 800; letter-spacing: -.02em;
+}
+@keyframes pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+.loader__dot { display: inline-block; }
+.loading__status { font-size: 16px; font-weight: 600; color: var(--text-muted); min-height: 24px; }
+.loading__hint { margin-top: 8px; font-size: 13px; color: var(--text-faint); }
+
+/* ============================================================
+   結果ページ
+   ============================================================ */
+.result { padding: 36px 0 70px; }
+/* タイプ別アクセントを result スコープに適用 */
+.result[data-type="game"] { --accent: var(--c-game); }
+.result[data-type="it"]   { --accent: var(--c-it); }
+.result[data-type="ai"]   { --accent: var(--c-ai); }
+
+.result__head { text-align: center; margin-bottom: 40px; }
+.result__eyebrow {
+  font-size: 12.5px; font-weight: 700; letter-spacing: .16em; color: var(--text-faint);
+  margin-bottom: 14px;
+}
+.result__lead { font-size: 16px; color: var(--text-muted); margin-bottom: 6px; }
+@keyframes pop { from { opacity: 0; transform: scale(.92) translateY(10px); } to { opacity: 1; transform: none; } }
+.result__type {
+  font-size: clamp(2rem, 8.5vw, 3.2rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.15;
+  color: var(--accent); margin: 4px 0 14px;
+  animation: pop .6s cubic-bezier(.22,.61,.36,1) both;
+}
+.result__type .bracket { color: var(--text-faint); font-weight: 700; }
+.result__catch { font-size: clamp(1rem, 4vw, 1.12rem); color: var(--text-muted); max-width: 34ch; margin: 0 auto; }
+
+/* カード共通 */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 26px 24px; box-shadow: var(--shadow-md);
+}
+.section-mt { margin-top: 22px; }
+
+/* レーダー + スコア */
+.profile { display: grid; gap: 26px; align-items: center; }
+.radar { width: 100%; max-width: 320px; margin: 0 auto; }
+.radar svg { width: 100%; height: auto; overflow: visible; }
+.radar .grid-poly { fill: none; stroke: var(--border-strong); stroke-width: 1; opacity: .7; }
+.radar .axis { stroke: var(--border-strong); stroke-width: 1; opacity: .55; }
+.radar .axis-label { fill: var(--text-muted); font-size: 11.5px; font-weight: 700; }
+.radar .data-group { transform-origin: 150px 150px; transform: scale(0); opacity: 0; transition: transform .9s cubic-bezier(.22,.61,.36,1), opacity .5s ease; }
+.radar .data-group.is-drawn { transform: scale(1); opacity: 1; }
+.radar .data-poly { fill: var(--accent); fill-opacity: .16; stroke: var(--accent); stroke-width: 2.2; stroke-linejoin: round; }
+.radar .data-dot { fill: var(--accent); }
+
+.stats { display: flex; flex-direction: column; gap: 14px; }
+.stat__top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+.stat__name { font-size: 14px; font-weight: 700; }
+.stat__val { font-size: 13px; font-weight: 700; color: var(--accent); }
+.stat__track { height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; }
+.stat__bar { height: 100%; width: 0; border-radius: 999px; background: var(--accent); transition: width 1s cubic-bezier(.22,.61,.36,1); }
+
+/* 詳細グリッド */
+.detail-grid { display: grid; gap: 16px; }
+.detail-card__label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--accent);
+  margin-bottom: 12px;
+}
+.detail-card__label .ic { width: 17px; height: 17px; }
+.detail-card p { color: var(--text); font-size: 15px; line-height: 1.75; }
+.taglist { display: flex; flex-wrap: wrap; gap: 9px; }
+.tag {
+  font-size: 13.5px; font-weight: 600; padding: 7px 13px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+}
+.steplist { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.steplist li { display: flex; gap: 13px; align-items: flex-start; font-size: 15px; line-height: 1.7; }
+.steplist .n {
+  flex: none; width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center;
+  font-size: 13px; font-weight: 800; color: #fff; background: var(--accent); margin-top: 1px;
+}
+
+/* ============================================================
+   サービス紹介セクション
+   ============================================================ */
+.services { margin-top: 46px; }
+.services__head { text-align: center; margin-bottom: 8px; }
+.services__eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; color: var(--text-faint); margin-bottom: 10px; }
+.services__title { font-size: clamp(1.35rem, 5vw, 1.7rem); font-weight: 800; letter-spacing: -.02em; }
+.services__note { text-align: center; color: var(--text-muted); font-size: 14px; margin: 10px auto 26px; max-width: 36ch; }
+.services__label {
+  text-align: center; font-size: 13px; font-weight: 700; color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.service-list { display: grid; gap: 16px; }
+.service-card {
+  display: flex; flex-direction: column; gap: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px 22px; box-shadow: var(--shadow-md);
+  transition: transform .2s, box-shadow .25s, border-color .2s;
+}
+.service-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+.service-card__top { display: flex; align-items: center; gap: 14px; }
+.service-card__icon {
+  flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+  background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent);
+}
+.service-card__icon svg { width: 24px; height: 24px; }
+.service-card__tag { font-size: 12px; font-weight: 700; letter-spacing: .03em; color: var(--accent); margin-bottom: 3px; }
+.service-card__name { font-size: 17.5px; font-weight: 700; letter-spacing: -.01em; }
+.service-card__desc { font-size: 14.5px; color: var(--text-muted); line-height: 1.75; }
+.service-card__link {
+  display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+  font-size: 14px; font-weight: 700; color: var(--accent);
+  padding-top: 2px; transition: gap .2s;
+}
+.service-card__link:hover { gap: 11px; }
+.service-card__link svg { width: 16px; height: 16px; }
+.services__disclaimer { text-align: center; font-size: 12px; color: var(--text-faint); margin-top: 18px; line-height: 1.6; }
+
+/* ============================================================
+   シェア / 再診断
+   ============================================================ */
+.share { margin-top: 44px; text-align: center; }
+.share__title { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+.share-row { display: flex; flex-direction: column; gap: 12px; max-width: 360px; margin: 0 auto; }
+.btn--x { color: #fff; background: #000; box-shadow: var(--shadow-sm); }
+[data-theme="dark"] .btn--x { background: #fff; color: #000; }
+.btn--x:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn--x svg { width: 18px; height: 18px; }
+.btn--copy { border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); }
+.btn--copy:hover { background: var(--surface-2); transform: translateY(-1px); }
+.restart {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 30px;
+  font-size: 14px; font-weight: 600; color: var(--text-muted);
+}
+.restart:hover { color: var(--text); }
+
+/* フッター */
+.site-footer { border-top: 1px solid var(--border); padding: 30px 0 40px; text-align: center; }
+.site-footer p { font-size: 12.5px; color: var(--text-faint); line-height: 1.8; }
+.site-footer .brand { justify-content: center; margin-bottom: 12px; font-size: 14px; }
+
+/* トースト */
+.toast {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px);
+  background: var(--text); color: var(--bg); font-size: 13.5px; font-weight: 600;
+  padding: 11px 20px; border-radius: 999px; box-shadow: var(--shadow-lg);
+  opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; z-index: 100;
+}
+.toast.is-show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ============================================================
+   レスポンシブ（タブレット以上）
+   ============================================================ */
+@media (min-width: 640px) {
+  .container { padding: 0 28px; }
+  .options { flex-direction: row; }
+  .option { flex: 1; flex-direction: column; align-items: flex-start; gap: 18px; min-height: 150px; padding: 24px; }
+  .option__text { font-size: 17px; }
+  .detail-grid { grid-template-columns: 1fr 1fr; }
+  .detail-card--wide { grid-column: 1 / -1; }
+  .profile { grid-template-columns: 1.05fr .95fr; }
+  .radar { max-width: 340px; }
+  .share-row { flex-direction: row; }
+  .share-row .btn { flex: 1; }
+}
+@media (min-width: 900px) {
+  :root { --maxw: 880px; }
+  .hero { padding: 84px 0 92px; }
+}
+
+/* モーション軽減 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .radar .data-group { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <div class="brand" aria-label="キャリア診断ラボ">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 8-4.2 13H9.2L5 11z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" style="color:var(--primary)"/><circle cx="16" cy="15" r="2.6" fill="var(--primary)"/></svg>
+      <span>キャリア診断<b>ラボ</b></span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="ダークモード切り替え">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.4 5.6l-1.4 1.4M7 17l-1.4 1.4M18.4 18.4L17 17M7 7L5.6 5.6"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.4 6.4 0 0 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= ランディング ================= -->
+  <section class="screen is-active" id="screen-landing">
+    <div class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <!-- 背景のレーダーモチーフ（このサイトの“計器”らしさを示すシグネチャ） -->
+        <svg viewBox="0 0 400 400" fill="none">
+          <g stroke="var(--primary)" stroke-opacity=".18" stroke-width="1">
+            <polygon points="200,40 348,148 291,322 109,322 52,148"/>
+            <polygon points="200,80 311,164 268,294 132,294 89,164"/>
+            <polygon points="200,120 274,180 245,266 155,266 126,180"/>
+            <line x1="200" y1="200" x2="200" y2="40"/><line x1="200" y1="200" x2="348" y2="148"/>
+            <line x1="200" y1="200" x2="291" y2="322"/><line x1="200" y1="200" x2="109" y2="322"/>
+            <line x1="200" y1="200" x2="52" y2="148"/>
+          </g>
+          <polygon points="200,96 300,170 250,278 150,262 110,172" fill="var(--primary)" fill-opacity=".10" stroke="var(--primary)" stroke-opacity=".4" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="container">
+        <div class="eyebrow rise d1">
+          <span class="pill">30秒で完了</span>
+          <span class="pill">完全無料</span>
+          <span class="pill">登録不要</span>
+        </div>
+        <h1 class="rise d2">30秒で分かる<br><span class="accent">キャリア診断</span></h1>
+        <p class="hero__sub rise d3">あなたに向いている働き方を見つけよう。<br>12の質問で、あなたの適性タイプを分析します。</p>
+        <div class="rise d4">
+          <button class="btn btn--primary" id="startBtn">
+            無料で診断を始める
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="hero__meta rise d5">全<b>12問</b>・所要時間 約<b>30秒</b>・5つの特性から<b>3タイプ</b>に分類</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 診断 ================= -->
+  <section class="screen" id="screen-quiz">
+    <div class="quiz">
+      <div class="container">
+        <div class="progress">
+          <div class="progress__meta">
+            <span>あなたの適性を分析中</span>
+            <span class="count tnum"><em id="qCurrent">1</em> / 12</span>
+          </div>
+          <div class="progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="1" id="progressBar">
+            <div class="progress__bar" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="qcard" id="qCard">
+          <div class="qnum" id="qNum">Q1</div>
+          <h2 class="qtext" id="qText">質問</h2>
+          <div class="options" id="qOptions"></div>
+          <button class="qback" id="qBack" hidden>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            前の質問に戻る
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 分析中 ================= -->
+  <section class="screen" id="screen-loading">
+    <div class="loading">
+      <div class="loading__inner">
+        <div class="loader">
+          <svg viewBox="0 0 132 132">
+            <defs><linearGradient id="lgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+            <circle class="ring-bg" cx="66" cy="66" r="58"/>
+            <circle class="ring-fg" cx="66" cy="66" r="58"/>
+          </svg>
+          <div class="loader__pct"><span class="loader__dot" id="loadPct">0%</span></div>
+        </div>
+        <p class="loading__status" id="loadStatus">回答を分析しています…</p>
+        <p class="loading__hint">あなたの特性から最適なキャリアタイプを算出しています</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 結果 ================= -->
+  <section class="screen" id="screen-result">
+    <div class="result" id="resultRoot" data-type="ai">
+      <div class="container">
+
+        <div class="result__head">
+          <div class="result__eyebrow rise d1">診断結果</div>
+          <p class="result__lead rise d1">あなたに向いているのは</p>
+          <h2 class="result__type" id="rType"><span class="bracket">【</span><span id="rTypeName">タイプ</span><span class="bracket">】</span></h2>
+          <p class="result__catch rise d2" id="rCatch">キャッチコピー</p>
+        </div>
+
+        <!-- レーダー（シグネチャ）＋スコア -->
+        <div class="card rise d3">
+          <div class="detail-card__label" style="color:var(--accent)">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 5.5v9L12 22l-8-5.5v-9z"/><path d="M12 7l4 2.7v4.6L12 17l-4-2.7V9.7z"/></svg>
+            適性プロファイル
+          </div>
+          <div class="profile">
+            <div class="radar" id="radar"></div>
+            <div class="stats" id="stats"></div>
+          </div>
+        </div>
+
+        <!-- 詳細 -->
+        <div class="detail-grid section-mt rise d4">
+          <div class="card detail-card detail-card--wide">
+            <div class="detail-card__label">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+              このタイプの特徴
+            </div>
+            <p id="rDesc"></p>
+          </div>
+
+          <div class="card detail-card">
+            <div class="detail-card__label">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+              強み
+            </div>
+            <div class="taglist" id="rStrength"></div>
+          </div>
+
+          <div class="card detail-card">
+            <div class="detail-card__label">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+              気をつけたい点
+            </div>
+            <div class="taglist" id="rWeak"></div>
+          </div>
+
+          <div class="card detail-card">
+            <div class="detail-card__label">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+              向いている働き方
+            </div>
+            <p id="rWork"></p>
+          </div>
+
+          <div class="card detail-card">
+            <div class="detail-card__label">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg>
+              向いている職種
+            </div>
+            <div class="taglist" id="rJobs"></div>
+          </div>
+
+          <div class="card detail-card detail-card--wide">
+            <div class="detail-card__label">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              次に取るべき行動
+            </div>
+            <ol class="steplist" id="rSteps"></ol>
+          </div>
+        </div>
+
+        <!-- ===================================================
+             サービス紹介  ※差し替えは下部 <script> の SERVICES を編集
+             =================================================== -->
+        <div class="services rise d5">
+          <div class="services__head">
+            <div class="services__eyebrow">さらに詳しく知りたい方へ</div>
+            <div class="services__title">次の一歩を後押しする選択肢</div>
+          </div>
+          <p class="services__note">診断結果を踏まえて、同じタイプの方が実際に活用している支援サービスをまとめました。</p>
+          <p class="services__label" id="svcLabel">このタイプの方が活用しているサービス</p>
+          <div class="service-list" id="serviceList"></div>
+          <p class="services__disclaimer">※掲載内容は各タイプの傾向に基づく一般的な情報です。利用を強制するものではありません。</p>
+        </div>
+
+        <!-- シェア -->
+        <div class="share rise d6">
+          <p class="share__title">診断結果をシェアする</p>
+          <div class="share-row">
+            <button class="btn btn--x" id="shareX">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817-5.967 6.817H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Xでシェアする
+            </button>
+            <button class="btn btn--copy" id="copyLink">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              リンクをコピー
+            </button>
+          </div>
+          <button class="restart" id="restartBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4M3 3v4h4"/></svg>
+            もう一度診断する
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true" width="18" height="18"><path d="M16 3l11 8-4.2 13H9.2L5 11z" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="15" r="2.6" fill="var(--primary)"/></svg><span>キャリア診断<b>ラボ</b></span></div>
+    <p>本診断は自己理解を目的とした簡易的なものです。結果は参考情報としてご活用ください。<br>&copy; 2025 キャリア診断ラボ</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast">リンクをコピーしました</div>
+
+<script>
+/* ====================================================================
+   1) 診断データ
+   ==================================================================== */
+
+/* 5つの特性: logic(論理性) / creativity(創造性) / learning(学習意欲)
+              / autonomy(自主性) / persistence(継続力) */
+const QUESTIONS = [
+  { n:'Q1', q:'新しいことを始めるとき、あなたは？',
+    a:{ t:'まず行動してみる',           s:{ autonomy:2, creativity:1 } },
+    b:{ t:'まず情報を調べる',           s:{ logic:2, learning:1 } } },
+  { n:'Q2', q:'休日に時間ができたら？',
+    a:{ t:'趣味や創作を楽しむ',         s:{ creativity:2, persistence:1 } },
+    b:{ t:'知識収集や勉強をする',       s:{ learning:2, logic:1 } } },
+  { n:'Q3', q:'仕事で大事にしたいのは？',
+    a:{ t:'安定して成果を出すこと',     s:{ logic:1, persistence:2 } },
+    b:{ t:'新しい価値を生み出すこと',   s:{ creativity:2, autonomy:1 } } },
+  { n:'Q4', q:'難しい課題に直面したら？',
+    a:{ t:'仕組みを分析して解く',       s:{ logic:2, learning:1 } },
+    b:{ t:'試行錯誤しながら進む',       s:{ creativity:1, persistence:2 } } },
+  { n:'Q5', q:'興味を持った分野は？',
+    a:{ t:'とことん深く極めたい',       s:{ persistence:2, learning:1 } },
+    b:{ t:'次々と新しいことに挑戦したい', s:{ autonomy:2, creativity:1 } } },
+  { n:'Q6', q:'理想の働き方に近いのは？',
+    a:{ t:'自分の裁量で自由に進める',   s:{ autonomy:2, creativity:1 } },
+    b:{ t:'専門性を磨いて極める',       s:{ learning:2, logic:1 } } },
+  { n:'Q7', q:'アイデアが浮かんだとき？',
+    a:{ t:'まず形にして試す',           s:{ creativity:2, autonomy:1 } },
+    b:{ t:'実現できるか検証する',       s:{ logic:2, learning:1 } } },
+  { n:'Q8', q:'目標に向かうスタイルは？',
+    a:{ t:'毎日コツコツ積み上げる',     s:{ persistence:2, logic:1 } },
+    b:{ t:'状況に応じて柔軟に変える',   s:{ autonomy:2, creativity:1 } } },
+  { n:'Q9', q:'新しいスキルを学ぶなら？',
+    a:{ t:'作りながら体で覚える',       s:{ creativity:1, persistence:2 } },
+    b:{ t:'理論から体系的に学ぶ',       s:{ logic:2, learning:1 } } },
+  { n:'Q10', q:'評価されたいのは？',
+    a:{ t:'独創的なアイデア',           s:{ creativity:2, autonomy:1 } },
+    b:{ t:'確実で質の高い成果',         s:{ logic:2, persistence:1 } } },
+  { n:'Q11', q:'チームの中での役割は？',
+    a:{ t:'場を引っ張るアイデアマン',   s:{ creativity:2, autonomy:1 } },
+    b:{ t:'全体を支える調整役',         s:{ logic:1, learning:1, persistence:1 } } },
+  { n:'Q12', q:'新しいツールが登場したら？',
+    a:{ t:'とりあえず触ってみる',       s:{ autonomy:2, learning:1 } },
+    b:{ t:'仕組みを理解してから使う',   s:{ logic:2, learning:1 } } },
+];
+
+/* 各特性の理論上の最大値（レーダー正規化用・QUESTIONSと整合） */
+const MAX = { logic:17, creativity:16, learning:11, autonomy:14, persistence:13 };
+
+/* 特性の表示順（レーダーの軸と一致：上→時計回り） */
+const AXES = [
+  { key:'logic',       label:'論理性' },
+  { key:'creativity',  label:'創造性' },
+  { key:'learning',    label:'学習意欲' },
+  { key:'autonomy',    label:'自主性' },
+  { key:'persistence', label:'継続力' },
+];
+
+/* タイプ別コンテンツ */
+const TYPES = {
+  game: {
+    name: 'ゲーム業界タイプ',
+    accentVar: '--c-game',
+    catch: 'ゼロから世界を作り、最後まで磨き上げる。創造と没頭の力を持つタイプ。',
+    desc: '豊かな発想力と、完成まで作り込む粘り強さを兼ね備えています。頭の中のイメージを形にすることに喜びを感じ、細部にこだわりながら一つの作品を仕上げきれる人。エンタメやコンテンツ制作のように、創造性と作り込みの両方が求められる現場で力を発揮します。',
+    strength: ['発想力・企画力', '細部への作り込み', '最後までやり抜く集中力'],
+    weak: ['興味に偏りが出やすい', '完璧主義になりがち', '没頭しすぎて疲れやすい'],
+    work: '創作に集中できる環境で、自分の裁量を持ってプロジェクトを動かせる働き方が向いています。チームでアイデアを出し合いながら、形にしていく現場が理想的です。',
+    jobs: ['ゲームプランナー', 'ゲームデザイナー', 'レベルデザイナー', 'シナリオライター', 'クリエイティブディレクター'],
+    steps: ['まずは小さくても自分の作品を一つ完成させ、ポートフォリオにする', 'ゲーム制作の進め方や職種ごとの役割を体系的に学ぶ', '業界に詳しいキャリアの専門家に、適性と進路を相談してみる'],
+  },
+  it: {
+    name: 'IT業界タイプ',
+    accentVar: '--c-it',
+    catch: '複雑な仕組みを解きほぐし、技術で課題を解決する。論理と学習の力を持つタイプ。',
+    desc: '論理的に物事を捉える力と、新しい知識を吸収し続ける学習意欲に優れています。複雑な問題も構造に分解して解決へ導くのが得意で、変化の速い技術トレンドにもしなやかに対応できる人。専門性を積み上げ、スキルで評価される領域で着実に伸びていくタイプです。',
+    strength: ['論理的思考力', '技術キャッチアップの速さ', '問題解決力'],
+    weak: ['理屈が先行し動き出しが遅れがち', '感覚的な判断が苦手なことも', '完璧な理解を求めすぎる傾向'],
+    work: 'スキルや専門性が正当に評価される環境で、技術を深めていける働き方が向いています。明確な課題に対してじっくり取り組める現場で力を発揮します。',
+    jobs: ['ソフトウェアエンジニア', 'データエンジニア', 'インフラエンジニア', 'システムアーキテクト', 'テックリード'],
+    steps: ['学習ロードマップを立て、手を動かしながら基礎を固める', '小さなプロダクトを作って公開し、成果物で実力を示す', 'IT業界に強いキャリアの専門家に、目指す方向性を相談してみる'],
+  },
+  ai: {
+    name: 'AI副業タイプ',
+    accentVar: '--c-ai',
+    catch: '自分の裁量で動き、AIを味方に成果を生む。自走と発想の力を持つタイプ。',
+    desc: '自分で考えて動く自走力と、新しいツールへの好奇心、そしてアイデアを価値に変える発想力を併せ持っています。組織に縛られず、自分のペースで挑戦することが得意な人。AIという強力な相棒を使いこなせば、少人数や個人でも大きな成果を生み出せるタイプです。',
+    strength: ['自走力・行動力', '新しいツールへの適応力', 'アイデアを収益に変える発想'],
+    weak: ['一人で抱え込みやすい', '興味が分散しやすい', '継続の仕組み化が課題になりがち'],
+    work: '場所や時間に縛られず、自分のアイデアを起点に動ける働き方が向いています。個人で完結できるプロジェクトや、副業・スモールビジネスと相性が良いタイプです。',
+    jobs: ['AIコンテンツクリエイター', 'プロンプトエンジニア', '個人開発者', 'AI活用コンサルタント', '副業ブロガー / 発信者'],
+    steps: ['AIツールを使い、まずは小さく副業をスタートしてみる', '取り組みや成果を発信して、実績を少しずつ積み上げる', 'AI活用を体系的に学べる場で、収益化の型を身につける'],
+  },
+};
+
+/* ====================================================================
+   2) サービス紹介データ  ★ここを編集すれば紹介内容を差し替えられます
+      - url : リンク先（アフィリエイトリンクはここに貼ります）
+      - 表記は「このタイプの方が活用しているサービス」を維持しています
+   ==================================================================== */
+const SERVICES = {
+  game: [
+    {
+      tag: 'ゲーム業界 特化型エージェント',
+      name: 'ゲーム業界向け 転職エージェント',
+      desc: 'ゲーム業界の職種や制作現場を熟知した担当者が、ポートフォリオの見せ方から非公開求人の紹介まで支援してくれるサービスです。',
+      url: '#', // ← ここにリンク（アフィリエイトURL）を設定
+      icon: 'game',
+    },
+  ],
+  it: [
+    {
+      tag: 'IT・Web業界 特化型エージェント',
+      name: 'IT業界向け 転職エージェント',
+      desc: 'エンジニアやIT職に精通したアドバイザーが、スキルの棚卸しからキャリアパス設計、企業選びまで伴走してくれるサービスです。',
+      url: '#', // ← ここにリンク（アフィリエイトURL）を設定
+      icon: 'it',
+    },
+  ],
+  ai: [
+    {
+      tag: 'AI活用 学習プログラム',
+      name: 'Claude学習スクール',
+      desc: 'AIアシスタント「Claude」の実践的な使い方を体系的に学び、副業や個人開発に活かすための学習プログラムです。',
+      url: '#', // ← ここにリンク（アフィリエイトURL）を設定
+      icon: 'ai',
+    },
+  ],
+};
+
+/* サービスカード用アイコン */
+const SVC_ICONS = {
+  game: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M7 11v3M5.5 12.5h3M15 12h.01M18 14h.01"/></svg>',
+  it:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>',
+  ai:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 4.2L18 8.8l-3.2 2.8.9 4.6L12 14l-3.7 2.2.9-4.6L6 8.8l4.4-1.6z"/><circle cx="12" cy="12" r="9.5" stroke-opacity=".25"/></svg>',
+};
+
+/* ====================================================================
+   3) 状態 & 要素
+   ==================================================================== */
+let answers = new Array(QUESTIONS.length).fill(null);
+let current = 0;
+
+const screens = {
+  landing: document.getElementById('screen-landing'),
+  quiz:    document.getElementById('screen-quiz'),
+  loading: document.getElementById('screen-loading'),
+  result:  document.getElementById('screen-result'),
+};
+function show(name) {
+  Object.values(screens).forEach(s => s.classList.remove('is-active'));
+  screens[name].classList.add('is-active');
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+/* ====================================================================
+   4) クイズ
+   ==================================================================== */
+const qNum = document.getElementById('qNum');
+const qText = document.getElementById('qText');
+const qOptions = document.getElementById('qOptions');
+const qCard = document.getElementById('qCard');
+const qBack = document.getElementById('qBack');
+const qCurrent = document.getElementById('qCurrent');
+const progressFill = document.getElementById('progressFill');
+const progressBar = document.getElementById('progressBar');
+
+function renderQuestion(i) {
+  const Q = QUESTIONS[i];
+  qNum.textContent = Q.n;
+  qText.textContent = Q.q;
+  qCurrent.textContent = i + 1;
+  qBack.hidden = (i === 0);
+
+  // 進捗（回答前の現在地を表示）
+  const pct = (i / QUESTIONS.length) * 100;
+  progressFill.style.width = pct + '%';
+  progressBar.setAttribute('aria-valuenow', i + 1);
+
+  // 選択肢
+  qOptions.innerHTML = '';
+  [['A', Q.a], ['B', Q.b]].forEach(([key, opt]) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.setAttribute('aria-label', key + '：' + opt.t);
+    btn.innerHTML =
+      '<span class="option__key">' + key + '</span>' +
+      '<span class="option__text">' + opt.t + '</span>';
+    if (answers[i] === key) btn.classList.add('is-picked');
+    btn.addEventListener('click', () => selectOption(i, key, btn));
+    qOptions.appendChild(btn);
+  });
+
+  // 入場アニメーションを再生
+  qCard.classList.remove('qanim'); void qCard.offsetWidth; qCard.classList.add('qanim');
+}
+
+function selectOption(i, key, btn) {
+  answers[i] = key;
+  // 選択を視覚的に確定
+  Array.from(qOptions.children).forEach(c => c.classList.remove('is-picked'));
+  btn.classList.add('is-picked');
+  // 進捗を回答済みまで進める
+  progressFill.style.width = ((i + 1) / QUESTIONS.length) * 100 + '%';
+
+  // 少し待ってから次へ（操作感を残す）
+  setTimeout(() => {
+    if (i < QUESTIONS.length - 1) {
+      current = i + 1;
+      renderQuestion(current);
+    } else {
+      finishQuiz();
+    }
+  }, 260);
+}
+
+qBack.addEventListener('click', () => {
+  if (current > 0) { current--; renderQuestion(current); }
+});
+
+/* ====================================================================
+   5) スコア計算
+   ==================================================================== */
+function computeResult() {
+  const raw = { logic:0, creativity:0, learning:0, autonomy:0, persistence:0 };
+  answers.forEach((ans, i) => {
+    const opt = ans === 'B' ? QUESTIONS[i].b : QUESTIONS[i].a;
+    for (const k in opt.s) raw[k] += opt.s[k];
+  });
+
+  // 0-100 に正規化（表示が空にならないよう下限8）
+  const norm = {};
+  for (const k in raw) {
+    norm[k] = Math.max(8, Math.min(100, Math.round((raw[k] / MAX[k]) * 100)));
+  }
+
+  // タイプ判定（正規化値の重み付き合算）
+  const L = norm.logic, C = norm.creativity, Le = norm.learning, A = norm.autonomy, P = norm.persistence;
+  const scores = {
+    game: C * 0.45 + P * 0.40 + A * 0.15,
+    it:   L * 0.45 + Le * 0.40 + P * 0.15,
+    ai:   A * 0.45 + Le * 0.30 + C * 0.25,
+  };
+  let type = 'ai', best = -1;
+  for (const t of ['game', 'it', 'ai']) { if (scores[t] > best) { best = scores[t]; type = t; } }
+
+  return { type, norm };
+}
+
+/* ====================================================================
+   6) 分析中 → 結果表示
+   ==================================================================== */
+const loadPct = document.getElementById('loadPct');
+const loadStatus = document.getElementById('loadStatus');
+const STATUS = ['回答を分析しています…', '5つの特性を算出中…', '最適なキャリアタイプを判定中…'];
+
+function finishQuiz() {
+  progressFill.style.width = '100%';
+  show('loading');
+
+  // パーセントカウントアップ
+  let p = 0;
+  loadPct.textContent = '0%';
+  const counter = setInterval(() => {
+    p = Math.min(100, p + Math.round(2 + Math.random() * 4));
+    loadPct.textContent = p + '%';
+    if (p >= 100) clearInterval(counter);
+  }, 55);
+
+  // ステータス文の切り替え
+  loadStatus.textContent = STATUS[0];
+  setTimeout(() => loadStatus.textContent = STATUS[1], 850);
+  setTimeout(() => loadStatus.textContent = STATUS[2], 1650);
+
+  // 結果へ
+  const result = computeResult();
+  setTimeout(() => renderResult(result), 2500);
+}
+
+/* ====================================================================
+   7) 結果ページ描画
+   ==================================================================== */
+let lastResult = null;
+
+function renderResult({ type, norm }) {
+  lastResult = { type, norm };
+  const T = TYPES[type];
+  const root = document.getElementById('resultRoot');
+  root.setAttribute('data-type', type);
+
+  document.getElementById('rTypeName').textContent = T.name;
+  document.getElementById('rCatch').textContent = T.catch;
+  document.getElementById('rDesc').textContent = T.desc;
+  document.getElementById('rWork').textContent = T.work;
+
+  // タグ系
+  fillTags('rStrength', T.strength);
+  fillTags('rWeak', T.weak);
+  fillTags('rJobs', T.jobs);
+
+  // 次の一歩
+  const steps = document.getElementById('rSteps');
+  steps.innerHTML = '';
+  T.steps.forEach((s, idx) => {
+    const li = document.createElement('li');
+    li.innerHTML = '<span class="n">' + (idx + 1) + '</span><span>' + s + '</span>';
+    steps.appendChild(li);
+  });
+
+  // サービスカード
+  renderServices(type);
+
+  // レーダー & スコアバー
+  drawRadar(norm);
+  drawStats(norm);
+
+  show('result');
+
+  // アニメーション起動（描画後）
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const dg = document.querySelector('.radar .data-group');
+    if (dg) dg.classList.add('is-drawn');
+    document.querySelectorAll('.stat__bar').forEach(b => { b.style.width = b.dataset.w + '%'; });
+  }));
+}
+
+function fillTags(id, arr) {
+  const el = document.getElementById(id);
+  el.innerHTML = '';
+  arr.forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'tag';
+    span.textContent = t;
+    el.appendChild(span);
+  });
+}
+
+function renderServices(type) {
+  const list = document.getElementById('serviceList');
+  list.innerHTML = '';
+  (SERVICES[type] || []).forEach(svc => {
+    const card = document.createElement('div');
+    card.className = 'service-card';
+    const icon = SVC_ICONS[svc.icon] || SVC_ICONS.it;
+    card.innerHTML =
+      '<div class="service-card__top">' +
+        '<div class="service-card__icon">' + icon + '</div>' +
+        '<div><div class="service-card__tag">' + svc.tag + '</div>' +
+        '<div class="service-card__name">' + svc.name + '</div></div>' +
+      '</div>' +
+      '<p class="service-card__desc">' + svc.desc + '</p>' +
+      '<a class="service-card__link" href="' + svc.url + '" target="_blank" rel="noopener noreferrer">詳しく見る' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>' +
+      '</a>';
+    list.appendChild(card);
+  });
+}
+
+/* ---- レーダーチャート（SVGで自前描画：外部ライブラリ不要） ---- */
+function drawRadar(norm) {
+  const cx = 150, cy = 150, R = 96;
+  const n = AXES.length;
+  // 上から時計回りの角度
+  const angle = i => (-90 + (360 / n) * i) * Math.PI / 180;
+  const pt = (i, frac) => [cx + Math.cos(angle(i)) * R * frac, cy + Math.sin(angle(i)) * R * frac];
+
+  let svg = '<svg viewBox="0 0 300 300" role="img" aria-label="適性のレーダーチャート">';
+
+  // グリッド（同心多角形）
+  [0.25, 0.5, 0.75, 1].forEach(f => {
+    const pts = AXES.map((_, i) => pt(i, f).map(v => v.toFixed(1)).join(',')).join(' ');
+    svg += '<polygon class="grid-poly" points="' + pts + '"/>';
+  });
+  // 軸線
+  AXES.forEach((_, i) => {
+    const [x, y] = pt(i, 1);
+    svg += '<line class="axis" x1="' + cx + '" y1="' + cy + '" x2="' + x.toFixed(1) + '" y2="' + y.toFixed(1) + '"/>';
+  });
+  // 軸ラベル
+  AXES.forEach((ax, i) => {
+    const [x, y] = pt(i, 1.2);
+    const c = Math.cos(angle(i));
+    const anchor = Math.abs(c) < 0.3 ? 'middle' : (c > 0 ? 'start' : 'end');
+    const dy = Math.sin(angle(i)) > 0.3 ? '0.9em' : (Math.sin(angle(i)) < -0.3 ? '-0.2em' : '0.32em');
+    svg += '<text class="axis-label" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="' + anchor + '" dy="' + dy + '">' + ax.label + '</text>';
+  });
+  // データ多角形（アニメーション対象）
+  const dpts = AXES.map((ax, i) => pt(i, norm[ax.key] / 100).map(v => v.toFixed(1)).join(',')).join(' ');
+  svg += '<g class="data-group">';
+  svg += '<polygon class="data-poly" points="' + dpts + '"/>';
+  AXES.forEach((ax, i) => {
+    const [x, y] = pt(i, norm[ax.key] / 100);
+    svg += '<circle class="data-dot" cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="3.2"/>';
+  });
+  svg += '</g></svg>';
+
+  document.getElementById('radar').innerHTML = svg;
+}
+
+function drawStats(norm) {
+  const el = document.getElementById('stats');
+  el.innerHTML = '';
+  AXES.forEach(ax => {
+    const v = norm[ax.key];
+    const row = document.createElement('div');
+    row.className = 'stat';
+    row.innerHTML =
+      '<div class="stat__top"><span class="stat__name">' + ax.label + '</span>' +
+      '<span class="stat__val tnum">' + v + '</span></div>' +
+      '<div class="stat__track"><div class="stat__bar" data-w="' + v + '"></div></div>';
+    el.appendChild(row);
+  });
+}
+
+/* ====================================================================
+   8) シェア / コピー
+   ==================================================================== */
+const SHARE_URL = location.href.split('#')[0]; // 公開後は実際のURLが入ります
+const SHARE_HASHTAG = 'キャリア診断ラボ';
+
+document.getElementById('shareX').addEventListener('click', () => {
+  const name = lastResult ? TYPES[lastResult.type].name : 'キャリアタイプ';
+  const text = '診断の結果、私は【' + name + '】でした。\nあなたも30秒でキャリア診断してみる？';
+  const url = 'https://twitter.com/intent/tweet'
+    + '?text=' + encodeURIComponent(text)
+    + '&url=' + encodeURIComponent(SHARE_URL)
+    + '&hashtags=' + encodeURIComponent(SHARE_HASHTAG);
+  window.open(url, '_blank', 'noopener,noreferrer');
+});
+
+const toast = document.getElementById('toast');
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('is-show');
+  setTimeout(() => toast.classList.remove('is-show'), 1900);
+}
+document.getElementById('copyLink').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(SHARE_URL);
+    showToast('リンクをコピーしました');
+  } catch (e) {
+    // フォールバック
+    const ta = document.createElement('textarea');
+    ta.value = SHARE_URL; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast('リンクをコピーしました'); }
+    catch (_) { showToast('コピーできませんでした'); }
+    document.body.removeChild(ta);
+  }
+});
+
+/* ====================================================================
+   9) 開始 / 再診断 / テーマ
+   ==================================================================== */
+document.getElementById('startBtn').addEventListener('click', () => {
+  answers = new Array(QUESTIONS.length).fill(null);
+  current = 0;
+  show('quiz');
+  renderQuestion(0);
+});
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  answers = new Array(QUESTIONS.length).fill(null);
+  current = 0;
+  // レーダーのアニメをリセット
+  const dg = document.querySelector('.radar .data-group');
+  if (dg) dg.classList.remove('is-drawn');
+  show('landing');
+});
+
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  /* 設定を保存したい場合（公開サイト向け）は次の行を有効化:
+     localStorage.setItem('theme', document.documentElement.getAttribute('data-theme')); */
+});
+/* 保存したテーマを復元したい場合（公開サイト向け）は次を有効化:
+   try { const t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch(e){} */
+</script>
+</body>
+</html>
