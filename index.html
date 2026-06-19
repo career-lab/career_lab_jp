@@ -65,6 +65,26 @@
   })();
 </script>
 
+<!-- ============================================================
+     アクセス解析（Google Analytics 4）
+     ▼ 公開前に G-XXXXXXXXXX を自分の測定IDに置き換えてください。
+        空 / 未設定なら計測は無効（サイトは正常動作します）。
+     ============================================================ -->
+<script>
+  window.GA_MEASUREMENT_ID = ''; // 例: 'G-XXXXXXXXXX'
+  (function () {
+    var id = window.GA_MEASUREMENT_ID;
+    if (!id || id.indexOf('G-') !== 0) return;
+    var s = document.createElement('script');
+    s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', id);
+  })();
+</script>
+
 <!-- ファビコン（外部リクエストなしのインラインSVG） -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 8-4.2 13H9.2L5 11z' fill='none' stroke='%235b5fef' stroke-width='2.4' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='15' r='2.6' fill='%235b5fef'/%3E%3C/svg%3E" />
 
@@ -500,6 +520,47 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .radar .data-group { transform: scale(1); opacity: 1; }
 }
+
+/* PR表記・運営情報・収益導線（アフィリエイト対応で追加） */
+.disclosure-bar { background: var(--bg-subtle); border-bottom: 1px solid var(--border); color: var(--text-muted); font-size: 12.5px; font-weight: 600; text-align: center; padding: 9px 16px; letter-spacing: .01em; }
+.services__pr { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--text-faint); margin: -14px auto 20px; }
+.result-cta { display: flex; flex-direction: column; gap: 12px; max-width: 460px; margin: 0 auto 38px; }
+.result-cta .btn { width: 100%; font-size: 15px; padding: 15px 24px; }
+.line-btn { color: #fff; background: #06c755; box-shadow: var(--shadow-sm); }
+.line-btn[hidden] { display: none; }
+.line-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.service-card--primary { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 28%, transparent), var(--shadow-md); }
+.service-card__badge { display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; font-size: 11.5px; font-weight: 800; letter-spacing: .04em; color: #fff; background: var(--accent); padding: 5px 11px; border-radius: 999px; }
+.footer-disclosure { font-size: 12px; color: var(--text-muted); max-width: 52ch; margin: 0 auto 16px; line-height: 1.7; }
+.footer-docs { display: flex; flex-direction: column; gap: 8px; max-width: 560px; margin: 0 auto 18px; text-align: left; }
+.footer-docs details { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.footer-docs summary { cursor: pointer; list-style: none; padding: 12px 16px; font-size: 13px; font-weight: 700; color: var(--text); }
+.footer-docs summary::-webkit-details-marker { display: none; }
+.footer-docs summary::after { content: '＋'; float: right; color: var(--text-faint); font-weight: 700; }
+.footer-docs details[open] summary::after { content: '−'; }
+.footer-doc__body { padding: 0 16px 14px; }
+.footer-doc__body p { font-size: 12.5px; color: var(--text-muted); line-height: 1.8; margin-bottom: 8px; }
+.footer-copy { font-size: 12px; color: var(--text-faint); margin-top: 6px; }
+
+/* 結果ページ再構成（強み上部・レーダー解説・3ステップ・ボタン型CTA） */
+.strength-card { background: color-mix(in srgb, var(--accent) 6%, var(--surface)); border-color: color-mix(in srgb, var(--accent) 22%, var(--border)); }
+.strength-card .detail-card__label { color: var(--accent); }
+.radar-note { font-size: 14.5px; color: var(--text-muted); line-height: 1.85; }
+.axis-val { fill: var(--accent); font-weight: 800; }
+.points-grid { display: grid; gap: 16px; }
+.point { display: flex; gap: 12px; align-items: flex-start; }
+.point__n { flex: none; width: 26px; height: 26px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 800; font-size: 13px; display: grid; place-items: center; margin-top: 1px; }
+.point__t { font-weight: 700; font-size: 14.5px; margin-bottom: 3px; }
+.point__d { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+.jobs-card .detail-card__label { color: var(--text-muted); }
+/* サービスカードのCTAをボタン化（主役=塗り / その他=アウトライン） */
+.service-card__cta { display: inline-flex; align-items: center; justify-content: center; gap: 7px; width: 100%; font-weight: 800; font-size: 15px; padding: 13px 18px; border-radius: 12px; transition: transform .15s, box-shadow .2s, background .2s; }
+.service-card__cta svg { width: 16px; height: 16px; }
+.service-card__cta--primary { color: #fff; background: var(--accent); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 30%, transparent); }
+.service-card__cta--primary:hover { transform: translateY(-2px); }
+.service-card__cta--ghost { color: var(--accent); border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--border)); background: var(--surface); }
+.service-card__cta--ghost:hover { background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+@media (min-width: 640px) { .points-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
@@ -517,6 +578,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     </button>
   </div>
 </header>
+
+<div class="disclosure-bar">本サイトは広告（プロモーション）を含みます</div>
 
 <main>
 
@@ -613,78 +676,44 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <p class="result__catch rise d2" id="rCatch">キャッチコピー</p>
         </div>
 
-        <!-- レーダー（シグネチャ）＋スコア -->
-        <div class="card rise d3">
+        <div class="result-cta rise d2" id="resultCta" hidden>
+          <a class="btn line-btn" id="lineBtn" target="_blank" rel="noopener noreferrer" hidden>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 2C6.5 2 2 5.74 2 10.3c0 4.08 3.69 7.5 8.65 8.06.34.07.8.22.92.51.1.26.07.66.03.92l-.14.9c-.04.26-.21 1.03.9.56 1.11-.47 5.97-3.52 8.15-6.03A7.36 7.36 0 0 0 22 10.3C22 5.74 17.5 2 12 2z"/></svg>
+            詳しい適職レポートをLINEで受け取る（無料）
+          </a>
+        </div>
+
+        <!-- このタイプの強み（ファーストビュー上部） -->
+        <div class="card strength-card rise d3">
+          <div class="detail-card__label">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+            このタイプのあなたの強み
+          </div>
+          <div class="taglist" id="rStrength"></div>
+        </div>
+
+        <!-- 適性バランス（レーダー＋解説） -->
+        <div class="card rise d4">
           <div class="detail-card__label" style="color:var(--accent)">
             <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 5.5v9L12 22l-8-5.5v-9z"/><path d="M12 7l4 2.7v4.6L12 17l-4-2.7V9.7z"/></svg>
-            適性プロファイル
+            あなたの適性バランス
           </div>
           <div class="profile">
             <div class="radar" id="radar"></div>
-            <div class="stats" id="stats"></div>
-          </div>
-        </div>
-
-        <!-- 詳細 -->
-        <div class="detail-grid section-mt rise d4">
-          <div class="card detail-card detail-card--wide">
-            <div class="detail-card__label">
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
-              このタイプの特徴
-            </div>
-            <p id="rDesc"></p>
-          </div>
-
-          <div class="card detail-card">
-            <div class="detail-card__label">
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
-              強み
-            </div>
-            <div class="taglist" id="rStrength"></div>
-          </div>
-
-          <div class="card detail-card">
-            <div class="detail-card__label">
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-              気をつけたい点
-            </div>
-            <div class="taglist" id="rWeak"></div>
-          </div>
-
-          <div class="card detail-card">
-            <div class="detail-card__label">
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
-              向いている働き方
-            </div>
-            <p id="rWork"></p>
-          </div>
-
-          <div class="card detail-card">
-            <div class="detail-card__label">
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg>
-              向いている職種
-            </div>
-            <div class="taglist" id="rJobs"></div>
-          </div>
-
-          <div class="card detail-card detail-card--wide">
-            <div class="detail-card__label">
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              次に取るべき行動
-            </div>
-            <ol class="steplist" id="rSteps"></ol>
+            <p class="radar-note" id="rRadarNote"></p>
           </div>
         </div>
 
         <!-- ===================================================
              サービス紹介  ※差し替えは下部 <script> の SERVICES を編集
              =================================================== -->
-        <div class="services rise d5">
+        <div class="services rise d5" id="servicesSection">
           <div class="services__head">
             <div class="services__eyebrow">さらに詳しく知りたい方へ</div>
             <div class="services__title">次の一歩を後押しする選択肢</div>
           </div>
-          <p class="services__note">診断結果を踏まえて、同じタイプの方が実際に活用している支援サービスをまとめました。</p>
+          <p class="services__note" id="svcNote">診断結果を踏まえて、同じタイプの方が実際に活用している支援サービスをまとめました。</p>
+          <p class="services__pr">広告（プロモーション）を含みます</p>
           <p class="services__label" id="svcLabel">このタイプの方が活用しているサービス</p>
           <div class="svc-switch" id="svcSwitch" hidden>
             <button type="button" class="svc-switch__btn" data-exp="1">経験を活かす</button>
@@ -692,6 +721,28 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           </div>
           <div class="service-list" id="serviceList"></div>
           <p class="services__disclaimer">※掲載内容は各タイプの傾向に基づく一般的な情報です。利用を強制するものではありません。</p>
+        </div>
+
+        <!-- 転職を成功させるためのポイント -->
+        <div class="card points-card section-mt rise d5">
+          <div class="detail-card__label" style="color:var(--accent)">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+            転職を成功させるためのポイント
+          </div>
+          <div class="points-grid">
+            <div class="point"><span class="point__n">1</span><div><p class="point__t">情報を広く集める</p><p class="point__d">多くの選択肢を知ることで、自分に合う求人が見つかりやすくなります。</p></div></div>
+            <div class="point"><span class="point__n">2</span><div><p class="point__t">プロに相談する</p><p class="point__d">専門家に相談することで、自分では気づけない強みが見えてきます。</p></div></div>
+            <div class="point"><span class="point__n">3</span><div><p class="point__t">比較して決める</p><p class="point__d">複数の求人を比較し、働き方が自分に合う企業を選びましょう。</p></div></div>
+          </div>
+        </div>
+
+        <!-- 向いている職種（小さく補足） -->
+        <div class="card jobs-card rise d5">
+          <div class="detail-card__label">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></svg>
+            このタイプに向いている職種
+          </div>
+          <div class="taglist" id="rJobs"></div>
         </div>
 
         <!-- シェア -->
@@ -722,13 +773,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <footer class="site-footer">
   <div class="container">
     <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true" width="18" height="18"><path d="M16 3l11 8-4.2 13H9.2L5 11z" fill="none" stroke="var(--primary)" stroke-width="2.4" stroke-linejoin="round"/><circle cx="16" cy="15" r="2.6" fill="var(--primary)"/></svg><span>キャリア診断<b>ラボ</b></span></div>
-    <p>本診断は自己理解を目的とした簡易的なものです。結果は参考情報としてご活用ください。<br>&copy; 2025 キャリア診断ラボ</p>
+    <p class="footer-disclosure">本サイトは広告（プロモーション）を含みます。掲載する各サービスの最新情報・条件は、必ず公式サイトでご確認ください。</p>
+    <div class="footer-docs">
+      <details>
+        <summary>運営者情報</summary>
+        <div class="footer-doc__body">
+          <p>運営者：<b>［運営者名を記入］</b><br>お問い合わせ：<b>［連絡先メールアドレス等を記入］</b></p>
+          <p>当サイト「キャリア診断ラボ」は、適職診断および転職・キャリア関連情報の提供を目的として運営しています。</p>
+        </div>
+      </details>
+      <details>
+        <summary>プライバシーポリシー</summary>
+        <div class="footer-doc__body">
+          <p><b>アクセス解析</b>：当サイトはGoogle Analytics（Cookieを使用）でアクセス状況を分析する場合があります。取得データは匿名で、個人を特定するものではありません。Cookieはブラウザ設定で無効化できます。</p>
+          <p><b>広告プログラム</b>：当サイトは成果報酬型の広告プログラムを利用しており、成果計測のため第三者がCookieを通じて情報を取得する場合があります。氏名・住所等の個人情報を取得するものではありません。</p>
+          <p><b>個人情報</b>：お問い合わせ等で取得した個人情報は、対応の目的以外には利用しません。</p>
+        </div>
+      </details>
+      <details>
+        <summary>免責事項</summary>
+        <div class="footer-doc__body">
+          <p>本診断は自己理解を目的とした簡易的なもので、結果や掲載情報は参考としてご活用ください。掲載サービスの内容・条件は変更される場合があるため、利用時は必ず各公式サイトの最新情報をご確認ください。本サイトの情報により生じた損害について、運営者は責任を負いかねます。</p>
+        </div>
+      </details>
+    </div>
+    <p class="footer-copy">&copy; 2025 キャリア診断ラボ</p>
   </div>
 </footer>
 
 <div class="toast" id="toast">リンクをコピーしました</div>
 
 <script>
+/* ====================================================================
+   0) 設定・計測（公開前に値を入れてください）
+   ==================================================================== */
+// LINE公式アカウントの友だち追加URL。空なら結果ページのLINE導線は出ません。
+const LINE_URL = '';
+// 計測ヘルパー：GA4が未設定でも安全に no-op で動作します。
+function track(name, params){ try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {} }
+// 各タイプの「なぜこのタイプのあなたにこれなのか」一言（収益導線の納得感づけ）
+const SVC_LEAD = {
+  it: '論理性と探究心が強いあなたは、スキルを正当に評価する環境ほど伸びます。まず専門エージェントで“今の市場価値”を確かめましょう。',
+  game: 'ゲーム・エンタメは“作る側”の経験がものを言う世界。専門エージェントなら、あなたの強みを業界基準で見てもらえます。',
+  web: 'デザインやWebは、ポートフォリオとセンスがそのまま評価につながる領域。クリエイター専門の目線でアピールを磨きましょう。',
+  rookie: '未経験は“正しい順番”で動けるかが分かれ道。まず基礎を学び、未経験OKの求人へ——遠回りに見えてこれが最短です。',
+  explore: 'まだ方向が定まっていなくて大丈夫。まずは幅広い求人に触れ、自分の“向き”を知るところから始めましょう。',
+  second: '第二新卒は企業からの需要が高い時期。一度の経験を活かして、次は“自分に合う環境”を選び直せます。',
+};
+
 /* ====================================================================
    1) 診断データ
    ==================================================================== */
@@ -869,17 +961,17 @@ const SERVICES = {
       { tag:'IT・コンサル特化エージェント', name:'テックゲートエキスパート', desc:'20〜30代のIT・Webコンサル領域の転職に強いエージェント。キャリアの方向性から相談できます。', url:'#', icon:'it' },
       { tag:'IT・Webエンジニア専門', name:'ユニゾンキャリア', desc:'IT・Webエンジニアの転職に特化し、無料相談から丁寧にサポートしてくれるサービスです。', url:'#', icon:'it' },
       { tag:'IT・Web スカウト型', name:'レバテックダイレクト', desc:'登録しておくと企業からスカウトが届く、IT・Web向けのスカウト転職サービスです。', url:'#', icon:'it' },
-      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・Web・IT・セキュリティ業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。:PR', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'it' },
+      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・Web・IT・セキュリティ業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'it' },
     ],
     new: [
       { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
       { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
-      { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。:PR', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
+      { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
     ],
   },
   game: {
     exp: [
-      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・エンタメ・Web・IT業界に特化した、経験者向けの転職エージェント。実務経験やポートフォリオを活かしたい方向けです。:PR', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'game' },
+      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・エンタメ・Web・IT業界に特化した、経験者向けの転職エージェント。実務経験やポートフォリオを活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'game' },
       { tag:'ゲーム業界 特化', name:'Hiraku agent', desc:'ゲーム業界に特化した転職エージェント。無料面談から業界事情を相談できます。', url:'#', icon:'game' },
       { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Web・ゲーム業界に強く、専任の担当がポートフォリオ作りから転職まで支援してくれるエージェントです。', url:'#', icon:'game' },
     ],
@@ -893,18 +985,18 @@ const SERVICES = {
     exp: [
       { tag:'Web・ゲーム クリエイター専任', name:'マイナビクリエイター', desc:'Webデザイナー・クリエイター職に強く、専任担当が作品づくりから転職まで伴走してくれるエージェントです。', url:'#', icon:'web' },
       { tag:'Web・クリエイター案件', name:'レバテッククリエイター', desc:'Web・デザイン領域のフリーランス案件を紹介してくれるサービスです。', url:'#', icon:'web' },
-      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'Web・ゲーム・IT業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。:PR', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'web' },
+      { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'Web・ゲーム・IT業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'web' },
     ],
     new: [
       { tag:'Web・AIスキル スクール', name:'メイカラ', desc:'Web（副業）スキルとAIの基礎を学べるスクール。未経験から手を動かして学びたい人向けです。', url:'#', icon:'learn' },
-      { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の使い方を学び、Web制作や副業に活かすための学習スクールです。:PR', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
+      { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の使い方を学び、Web制作や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
       { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'未経験からIT・Web系を目指す人に寄り添う特化型エージェント。まず相談したい人向けです。', url:'#', icon:'rookie' },
     ],
   },
   rookie: [
     { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
     { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
-    { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。:PR', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
+    { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
   ],
   explore: [
     { tag:'総合型 求人サイト', name:'リクナビNEXT', desc:'幅広い業種の求人を眺められる総合型の転職サイト。まずは登録して世の中の仕事を知るのに向いています。', url:'#', icon:'explore' },
@@ -961,6 +1053,7 @@ const progressBar = document.getElementById('progressBar');
 
 function renderQuestion(i) {
   const Q = QUESTIONS[i];
+  track('question_view', { step: i + 1 });
   qNum.textContent = Q.n;
   qText.textContent = Q.q;
   qCurrent.textContent = i + 1;
@@ -1093,29 +1186,33 @@ function renderResult({ type, norm, experienced }) {
 
   document.getElementById('rTypeName').textContent = T.name;
   document.getElementById('rCatch').textContent = T.catch;
-  document.getElementById('rDesc').textContent = T.desc;
-  document.getElementById('rWork').textContent = T.work;
 
-  // タグ系
+  // タグ系（強みは上部カード、職種は下部の補足カード）
   fillTags('rStrength', T.strength);
-  fillTags('rWeak', T.weak);
   fillTags('rJobs', T.jobs);
 
-  // 次の一歩
-  const steps = document.getElementById('rSteps');
-  steps.innerHTML = '';
-  T.steps.forEach((s, idx) => {
-    const li = document.createElement('li');
-    li.innerHTML = '<span class="n">' + (idx + 1) + '</span><span>' + s + '</span>';
-    steps.appendChild(li);
-  });
+  // レーダー横の解説（このタイプの特徴）
+  const rn = document.getElementById('rRadarNote');
+  if (rn) rn.textContent = T.desc;
+
+  // 計測：診断完了
+  track('diagnosis_complete', { career_type: type, experienced: experienced });
+
+  // LINE導線（LINE_URL が設定されている時だけ表示）
+  const cta = document.getElementById('resultCta');
+  const lineBtn = document.getElementById('lineBtn');
+  if (LINE_URL && lineBtn && cta) {
+    lineBtn.href = LINE_URL; lineBtn.hidden = false; cta.hidden = false;
+    lineBtn.onclick = () => track('line_click', { career_type: type });
+  } else if (cta) {
+    cta.hidden = true;
+  }
 
   // サービスカード（経験者/未経験で出し分け）
   renderServices(type, experienced);
 
-  // レーダー & スコアバー
+  // レーダー描画
   drawRadar(norm);
-  drawStats(norm);
 
   show('result');
 
@@ -1123,7 +1220,6 @@ function renderResult({ type, norm, experienced }) {
   requestAnimationFrame(() => requestAnimationFrame(() => {
     const dg = document.querySelector('.radar .data-group');
     if (dg) dg.classList.add('is-drawn');
-    document.querySelectorAll('.stat__bar').forEach(b => { b.style.width = b.dataset.w + '%'; });
   }));
 }
 
@@ -1145,15 +1241,19 @@ const SHOW_SERVICES = true;
 
 function renderServices(type, experienced) {
   const list = document.getElementById('serviceList');
-  const section = list.closest('.services');
+  const section = document.getElementById('servicesSection');
   const sw = document.getElementById('svcSwitch');
+  const note = document.getElementById('svcNote');
   list.innerHTML = '';
+
+  // 診断結果に紐づく“なぜこれか”の一言
+  if (note && SVC_LEAD[type]) note.textContent = SVC_LEAD[type];
 
   if (!SHOW_SERVICES) { if (section) section.style.display = 'none'; if (sw) sw.hidden = true; return; }
 
   const data = SERVICES[type];
-  const branchable = data && !Array.isArray(data);          // {exp,new} 形式か
-  const filled = arr => (arr || []).filter(s => s.url && s.url !== '#'); // リンクが入ったものだけ
+  const branchable = data && !Array.isArray(data);
+  const filled = arr => (arr || []).filter(s => s.url && s.url !== '#');
   const items = branchable ? filled(data[experienced ? 'exp' : 'new']) : filled(data);
 
   // 経験者/未経験トグル：分岐タイプで、両方に表示できるカードがある時だけ出す
@@ -1170,20 +1270,29 @@ function renderServices(type, experienced) {
   if (items.length === 0) { if (section) section.style.display = 'none'; return; }
   if (section) section.style.display = '';
 
-  items.forEach(svc => {
+  const ctaMap = { learn: '無料で見てみる', explore: '無料で登録する' };
+  const level = branchable ? (experienced ? 'exp' : 'new') : 'flat';
+
+  items.forEach((svc, idx) => {
     const card = document.createElement('div');
-    card.className = 'service-card';
+    card.className = 'service-card' + (idx === 0 ? ' service-card--primary' : '');
     const icon = SVC_ICONS[svc.icon] || SVC_ICONS.it;
+    const cta = svc.cta || ctaMap[svc.icon] || '無料で相談する';
+    const badge = idx === 0 ? '<span class="service-card__badge">★ 最もおすすめ</span>' : '';
+    const ctaClass = 'service-card__cta ' + (idx === 0 ? 'service-card__cta--primary' : 'service-card__cta--ghost');
     card.innerHTML =
+      badge +
       '<div class="service-card__top">' +
         '<div class="service-card__icon">' + icon + '</div>' +
         '<div><div class="service-card__tag">' + svc.tag + '</div>' +
         '<div class="service-card__name">' + svc.name + '</div></div>' +
       '</div>' +
       '<p class="service-card__desc">' + svc.desc + '</p>' +
-      '<a class="service-card__link" href="' + svc.url + '" target="_blank" rel="noopener noreferrer">詳しく見る' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>' +
+      '<a class="' + ctaClass + '" href="' + svc.url + '" target="_blank" rel="noopener noreferrer">' + cta +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
       '</a>';
+    const link = card.querySelector('.service-card__cta');
+    if (link) link.addEventListener('click', () => track('service_click', { service: svc.name, career_type: type, level: level, position: idx + 1 }));
     list.appendChild(card);
   });
 }
@@ -1223,7 +1332,7 @@ function drawRadar(norm) {
     const c = Math.cos(angle(i));
     const anchor = Math.abs(c) < 0.3 ? 'middle' : (c > 0 ? 'start' : 'end');
     const dy = Math.sin(angle(i)) > 0.3 ? '0.9em' : (Math.sin(angle(i)) < -0.3 ? '-0.2em' : '0.32em');
-    svg += '<text class="axis-label" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="' + anchor + '" dy="' + dy + '">' + ax.label + '</text>';
+    svg += '<text class="axis-label" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="' + anchor + '" dy="' + dy + '">' + ax.label + '<tspan class="axis-val" dx="4">' + norm[ax.key] + '</tspan></text>';
   });
   // データ多角形（アニメーション対象）
   const dpts = AXES.map((ax, i) => pt(i, norm[ax.key] / 100).map(v => v.toFixed(1)).join(',')).join(' ');
@@ -1295,6 +1404,7 @@ document.getElementById('copyLink').addEventListener('click', async () => {
 document.getElementById('startBtn').addEventListener('click', () => {
   answers = new Array(QUESTIONS.length).fill(null);
   current = 0;
+  track('diagnosis_start');
   show('quiz');
   renderQuestion(0);
 });
