@@ -7,8 +7,8 @@
 <!-- ============================================================
      SEO / メタタグ  ※公開前に下の URL とドメインを自分のものに置き換えてください
      ============================================================ -->
-<title>キャリア診断ラボ｜30秒で分かる適職診断</title>
-<meta name="description" content="30秒・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲーム業界から、未経験スタート、第二新卒まで、強み・向いている職種・次の一歩を診断します。無料・登録不要。" />
+<title>キャリア診断ラボ｜3分で分かる適職診断</title>
+<meta name="description" content="3分・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲーム業界から、未経験スタート、第二新卒まで、強み・向いている職種・次の一歩を診断します。無料・登録不要。" />
 <meta name="keywords" content="キャリア診断,適職診断,転職,IT業界,ゲーム業界,Webデザイナー,未経験転職,第二新卒,自己分析,無料診断" />
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)" />
@@ -17,8 +17,8 @@
 <!-- OGP（Facebook / 一般SNS） -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="キャリア診断ラボ" />
-<meta property="og:title" content="キャリア診断ラボ｜30秒で分かる適職診断" />
-<meta property="og:description" content="30秒・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲームから未経験・第二新卒まで、強みと次の一歩がわかる無料診断。" />
+<meta property="og:title" content="キャリア診断ラボ｜3分で分かる適職診断" />
+<meta property="og:description" content="3分・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲームから未経験・第二新卒まで、強みと次の一歩がわかる無料診断。" />
 <meta property="og:url" content="https://career-lab.github.io/career_lab_jp/" />
 <meta property="og:image" content="https://career-lab.github.io/career_lab_jp/ogp.png" />
 <meta property="og:image:width" content="1200" />
@@ -27,8 +27,8 @@
 
 <!-- Twitter / X カード -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="キャリア診断ラボ｜30秒で分かる適職診断" />
-<meta name="twitter:description" content="30秒・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲームから未経験・第二新卒まで、強みと次の一歩がわかる無料診断。" />
+<meta name="twitter:title" content="キャリア診断ラボ｜3分で分かる適職診断" />
+<meta name="twitter:description" content="3分・全12問の二択で、あなたに向いている働き方タイプを分析。IT・Web・ゲームから未経験・第二新卒まで、強みと次の一歩がわかる無料診断。" />
 <meta name="twitter:image" content="https://career-lab.github.io/career_lab_jp/ogp.png" />
 
 <!-- 構造化データ（JSON-LD） -->
@@ -48,7 +48,7 @@
       "url": "https://career-lab.github.io/career_lab_jp/",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "30秒・全12問の二択で、あなたに向いている働き方タイプ（IT・Web・ゲーム・未経験・第二新卒ほか）を分析する無料の適職診断。",
+      "description": "3分・全12問の二択で、あなたに向いている働き方タイプ（IT・Web・ゲーム・未経験・第二新卒ほか）を分析する無料の適職診断。",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
     }
   ]
@@ -602,11 +602,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       <div class="container">
         <div class="eyebrow rise d1">
-          <span class="pill">30秒で完了</span>
+          <span class="pill">3分で完了</span>
           <span class="pill">完全無料</span>
           <span class="pill">登録不要</span>
         </div>
-        <h1 class="rise d2">30秒で分かる<br><span class="accent">キャリア診断</span></h1>
+        <h1 class="rise d2">3分で分かる<br><span class="accent">キャリア診断</span></h1>
         <p class="hero__sub rise d3">あなたに向いている働き方を見つけよう。<br>12の質問で、あなたの適性タイプを分析します。</p>
         <div class="rise d4">
           <button class="btn btn--primary" id="startBtn">
@@ -614,7 +614,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
-        <p class="hero__meta rise d5">全<b>12問</b>・所要時間 約<b>30秒</b>・5つの特性から<b>6タイプ</b>に分類</p>
+        <p class="hero__meta rise d5">全<b>12問</b>・所要時間 約<b>3分</b>・5つの特性から<b>6タイプ</b>に分類</p>
       </div>
     </div>
   </section>
@@ -1379,7 +1379,7 @@ const SHARE_HASHTAG = 'キャリア診断ラボ';
 
 document.getElementById('shareX').addEventListener('click', () => {
   const name = lastResult ? TYPES[lastResult.type].name : 'キャリアタイプ';
-  const text = '診断の結果、私は【' + name + '】でした。\nあなたも30秒でキャリア診断してみる？';
+  const text = '診断の結果、私は【' + name + '】でした。\nあなたも3分でキャリア診断してみる？';
   const url = 'https://twitter.com/intent/tweet'
     + '?text=' + encodeURIComponent(text)
     + '&url=' + encodeURIComponent(SHARE_URL)
