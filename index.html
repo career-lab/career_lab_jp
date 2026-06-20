@@ -778,7 +778,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <details>
         <summary>運営者情報</summary>
         <div class="footer-doc__body">
-          <p>運営者：<b>［キャリア診断ラボ］</b><br>お問い合わせ：<b>［X→@career_lab_jp］</b></p>
+          <p>運営者：<b>まな｜IT・Web系の適職案内</b><br>お問い合わせ：<b>X (旧Twitter)：@manamana_career</b></p>
           <p>当サイト「キャリア診断ラボ」は、適職診断および転職・キャリア関連情報の提供を目的として運営しています。</p>
         </div>
       </details>
@@ -964,8 +964,10 @@ const SERVICES = {
       { tag:'ゲーム・Web・IT 経験者向け（東京）', name:'エニカン（AnyKan）', desc:'ゲーム・Web・IT・セキュリティ業界に特化した、経験者向けの転職エージェント。東京近郊で実務経験を活かしたい方向けです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5YSH+EJXIO2+5NMK+609HT', icon:'it' },
       { tag:'DX・AI・戦略コンサル特化', name:'NewMA', desc:'DX・戦略・AIコンサル領域への転職を支援するサービス。市場価値を高めたい経験者向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642180&p_id=7487&pc_id=21632&pl_id=93909', icon:'it' },
       { tag:'リモートワーク求人特化', name:'Remoful（リモフル）', desc:'リモートワーク中心の求人に特化した転職支援。働く場所にこだわりたいエンジニア向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642182&p_id=5870&pc_id=16301&pl_id=75203', icon:'it' },
+      { tag:'総合型 転職エージェント（IT・Web強い）', name:'type転職エージェント', desc:'IT・Web系の求人に強い総合型エージェント。幅広い選択肢から比較したい経験者にも向いています。', url:'https://af.moshimo.com/af/c/click?a_id=5642178&p_id=7540&pc_id=21772&pl_id=94547', icon:'it', cta:'無料で登録する' },
     ],
     new: [
+      { tag:'未経験IT 特化エージェント', name:'Tamesy（タメシー）', desc:'20代・第二新卒の未経験からIT業界へ。業界を知るところから無料で相談できるエージェントです。', url:'https://af.moshimo.com/af/c/click?a_id=5642195&p_id=7048&pc_id=20176&pl_id=89087', icon:'rookie' },
       { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
       { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
       { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
@@ -997,12 +999,14 @@ const SERVICES = {
     ],
   },
   rookie: [
+    { tag:'未経験IT 特化エージェント', name:'Tamesy（タメシー）', desc:'20代・第二新卒の未経験からのIT転職に特化したエージェント。まずIT業界を知るところから相談できます。', url:'https://af.moshimo.com/af/c/click?a_id=5642195&p_id=7048&pc_id=20176&pl_id=89087', icon:'rookie' },
     { tag:'未経験IT 特化エージェント', name:'キャリアカンパニー', desc:'スキル0・未経験からのITエンジニア転職に寄り添う、特化型のエージェントです。', url:'#', icon:'rookie' },
     { tag:'生成AI 学習スクール', name:'DMM 生成AI CAMP', desc:'ChatGPTなどの生成AIを学び、仕事に活かすためのスクール。無料セミナーから始められます。', url:'#', icon:'learn' },
     { tag:'Claude・生成AI 学習スクール', name:'Claude学習スクール', desc:'AIアシスタント「Claude」の実践的な使い方を学び、仕事や副業に活かすための学習スクールです。', url:'https://px.a8.net/svt/ejp?a8mat=4B5U4A+3ENBEA+5VRC+5YJRM', icon:'learn' },
   ],
   explore: [
     { tag:'総合型 エージェントマッチング', name:'転職エージェントナビ', desc:'あなたに合った転職エージェントを紹介してくれるマッチングサービス。まず幅広く比較したい人向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642221&p_id=5537&pc_id=15176&pl_id=71501', icon:'explore' },
+    { tag:'総合型 転職エージェント', name:'type転職エージェント', desc:'IT・Web系に強く、20〜30代の転職に定評のある総合型エージェント。求人を見ながら相談したい人向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642178&p_id=7540&pc_id=21772&pl_id=94547', icon:'explore' },
     { tag:'キャリアコーチング', name:'ポジウィルキャリア', desc:'転職ありきではなく、自分のやりたいことから整理できるキャリアコーチング。方向性に迷う人向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642226&p_id=5098&pc_id=13789&pl_id=93356', icon:'explore', cta:'無料で相談する' },
     { tag:'無料キャリア面談', name:'サクキャリマッチ', desc:'キャリアコーチングのプロと無料面談し、自分に合う進み方を一緒に考えられるサービスです。', url:'https://af.moshimo.com/af/c/click?a_id=5642193&p_id=7239&pc_id=20766&pl_id=92848', icon:'explore', cta:'無料で相談する' },
     { tag:'総合型 求人サイト', name:'リクナビNEXT', desc:'幅広い業種の求人を眺められる総合型の転職サイト。まずは登録して世の中の仕事を知るのに向いています。', url:'#', icon:'explore' },
@@ -1011,6 +1015,7 @@ const SERVICES = {
   ],
   second: [
     { tag:'20代特化エージェント', name:'猫の手AGENT', desc:'20代に特化した転職エージェント。フォームやLINEから気軽に無料相談でき、若手の再スタートに寄り添います。', url:'https://af.moshimo.com/af/c/click?a_id=5642174&p_id=7593&pc_id=21950&pl_id=94966', icon:'second' },
+    { tag:'第二新卒・未経験IT 特化', name:'Tamesy（タメシー）', desc:'第二新卒・20代の未経験からIT業界への転職を支援。手に職をつけて再スタートしたい人に向いています。', url:'https://af.moshimo.com/af/c/click?a_id=5642195&p_id=7048&pc_id=20176&pl_id=89087', icon:'rookie' },
     { tag:'キャリアコーチング', name:'ポジウィルキャリア', desc:'やりたいことの整理から始めるキャリアコーチング。一度立ち止まって方向を決め直したい人向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642226&p_id=5098&pc_id=13789&pl_id=93356', icon:'second', cta:'無料で相談する' },
     { tag:'女性向け 転職エージェント', name:'type女性の転職エージェント', desc:'女性のキャリアに特化した転職エージェント。ライフプランも踏まえて相談したい女性向けです。', url:'https://af.moshimo.com/af/c/click?a_id=5642179&p_id=7541&pc_id=21774&pl_id=94549', icon:'second' },
     { tag:'第二新卒 特化エージェント', name:'UZUZ第二新卒', desc:'第二新卒・既卒向けに特化した転職エージェント。若手の再スタートに寄り添ってくれます。', url:'#', icon:'second' },
