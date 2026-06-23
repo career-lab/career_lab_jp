@@ -1253,6 +1253,11 @@ function fillTags(id, arr) {
    済んだものから順に表示されます（'#' のカードは出ません）。 */
 const SHOW_SERVICES = true;
 
+/* ★表示するサービスカードの最大枚数（主役1＋脇役1〜2＝合計3枚まで）。
+   さらに絞りたいときは 2 に、もっと出したいときは数値を上げてください。
+   並び順がそのまま表示優先度になるので、見せたいカードを各配列の上に置けばOK。 */
+const MAX_SERVICE_CARDS = 3;
+
 function renderServices(type, experienced) {
   const list = document.getElementById('serviceList');
   const section = document.getElementById('servicesSection');
@@ -1268,7 +1273,8 @@ function renderServices(type, experienced) {
   const data = SERVICES[type];
   const branchable = data && !Array.isArray(data);
   const filled = arr => (arr || []).filter(s => s.url && s.url !== '#');
-  const items = branchable ? filled(data[experienced ? 'exp' : 'new']) : filled(data);
+  // 主役1＋脇役1〜2に間引く：表示は先頭から MAX_SERVICE_CARDS 件まで
+  const items = (branchable ? filled(data[experienced ? 'exp' : 'new']) : filled(data)).slice(0, MAX_SERVICE_CARDS);
 
   // 経験者/未経験トグル：分岐タイプで、両方に表示できるカードがある時だけ出す
   if (sw) {
